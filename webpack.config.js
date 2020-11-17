@@ -2,39 +2,31 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  mode: process.env.NODE_ENV,
   entry: './client/index.js',
-  output: {
-    path: path.join(__dirname, 'build'),
-    filename: 'bundle.js',
-  },
-
-  devServer: {
-    publicPath: '/build',
-    proxy: {
-      '/api/': 'http://localhost:3000',
-    },
-    port: 8080,
-  },
+  mode: 'development',
   module: {
     rules: [
       {
-        test: /\.jsx?/,
-        exclude: /(node_modules)/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env', '@babel/preset-react'],
-            },
-          },
-        ],
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        options: { presets: ['@babel/env', '@babel/preset-react'] },
       },
       {
         test: /\.css$/,
-        exclude: /(node_modules)/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader'],
       },
     ],
+  },
+  resolve: { extensions: ['*', '.js', '.jsx'] },
+  output: {
+    path: path.resolve(__dirname, 'build/'),
+    publicPath: '/build/',
+    filename: 'bundle.js',
+  },
+  devServer: {
+    contentBase: __dirname,
+    port: 3000,
+    publicPath: '/',
   },
 };
