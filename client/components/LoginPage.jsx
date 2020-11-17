@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import history from 'history';
 
-const LoginPage = ({ isLoggedIn, isDevUser, history }) => {
+const LoginPage = ({ isLoggedIn, isDevUser, username, history }) => {
   // const directUser = () => {
     
   // }

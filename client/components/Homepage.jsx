@@ -3,7 +3,7 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 
 // TODO: "Hello, ${user}" should be dynamic, pass username down as props from App component
 
-const displayAllDevs = () => {
+const displayAllDevs = ({ devs, inCart, devSelected, filterOptions, username }) => {
   
 }
 
