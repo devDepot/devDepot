@@ -8,7 +8,7 @@ import EmployerSignup from './components/EmployerSignup';
 import history from './components/history';
 import Homepage from './components/Homepage';
 import DeveloperAboutMe from './components/DeveloperAboutMe';
-import EmployerAboutMe from './components/EEmployerAboutMe';
+import EmployerAboutMe from './components/EmployerAboutMe';
 
 const App = () => {
   const [isLoggedIn, setLogin] = useState(false);
