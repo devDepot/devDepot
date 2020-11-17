@@ -20,7 +20,7 @@ authController.setCookie = (req, res, next) => {
       expiresIn: 60,
     }
   );
-  res.cookie('devdepot_session', token);
+  res.cookie('devdepot_sid', token, { httpOnly: true, secure: true });
 
   return next();
 };
