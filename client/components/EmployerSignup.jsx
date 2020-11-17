@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 
-const SeekerSignup = ({ isLoggedIn, isEngineerUser, history }) => {
+const EmployerSignup = ({ isLoggedIn, isDevUser, history }) => {
   return (
     <form>
       <p>Employer Signup</p>
@@ -48,4 +48,4 @@ const SeekerSignup = ({ isLoggedIn, isEngineerUser, history }) => {
   );
 };
 
-export default SeekerSignup;
+export default withRouter(EmployerSignup);

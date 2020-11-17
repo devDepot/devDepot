@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 
-const EngineerSignup = ({ isLoggedIn, isEngineerUser, history }) => {
+const DeveloperSignup = ({ isLoggedIn, isDevUser, history }) => {
   return (
     <form>
-      <p>Engineer Signup</p>
+      <p>Developer Signup</p>
         <label htmlFor='name'>Name: </label>
         <input
           type='text'
@@ -57,11 +57,11 @@ const EngineerSignup = ({ isLoggedIn, isEngineerUser, history }) => {
           placeholder='Tell Us About Yourself...'
           id='aboutme'>
         </textarea>
-        <button onClick={() => history.push('/engineer-aboutme')}>
+        <button onClick={() => history.push('/dev-aboutme')}>
           Signup
         </button>
     </form>
   ) 
 }
 
-export default withRouter(EngineerSignup);
+export default withRouter(DeveloperSignup);
