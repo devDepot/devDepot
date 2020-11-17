@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //TODO: find out where frontend is putting the html file
-app.use(express.static(__dirname));
+app.use(express.static(__dirname, '../components/public/'));
 
 app.use(express.static(path.resolve(__dirname, '../client/')));
 
