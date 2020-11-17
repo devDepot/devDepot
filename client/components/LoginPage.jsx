@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-const LoginPage = () => {
+const LoginPage = ({ isLoggedIn }) => {
   return (
     <div>
-      <p>Hello!</p>
+      <p>{isLoggedIn}</p>
     </div>
   );
 };
