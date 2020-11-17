@@ -2,24 +2,31 @@ import React, { useState } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import history from 'history';
 
-const LoginPage = ({ isLoggedIn, isEngineerUser, history }) => {
-  if (isLoggedIn && isEngineerUser) {
-    return <Redirect to="/engineer-aboutme" />;
-  };
-  if (isLoggedIn && !isEngineerUser) {
-    return <Redirect to="/homepage" />;
-  };
-
+const LoginPage = ({ isLoggedIn, isDevUser, history }) => {
+  // const directUser = () => {
+    
+  // }
+  
   return (
     <div>
-      <p>DevDepot</p>
-      <button onClick={() => history.push('/engineer-signup')}>
-        Engineer
-      </button>
-      <button onClick={() => history.push('/seeker-signup')}>
-        Looking to Hire
-      </button>
-      <p>Already have an account? Login <a><Link to="/login" >here</Link></a></p>
+      <p>DevDepot Sign In</p>
+        <label htmlFor='username'>Username: </label>
+        <input
+          type='text'
+          name='username'
+          placeholder='Username'
+          id='username'>
+        </input>
+        <label htmlFor='password'>Password: </label>
+        <input
+          type='text'
+          name='password'
+          placeholder='Password'
+          id='password'>
+        </input>
+        <button onClick={() => history.push('/dev-aboutme')}>
+          Login
+        </button>
     </div>
   );
 };
