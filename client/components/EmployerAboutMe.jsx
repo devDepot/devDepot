@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 
-const DeveloperAboutMe = ({ username, history }) => {
+const EmployerAboutMe = ({ username, history }) => {
   return (
     <div>
-      <p>Developer Profile</p>
+      <p>Employer Profile</p>
       <div>
         Name: 
       </div>
@@ -12,10 +12,7 @@ const DeveloperAboutMe = ({ username, history }) => {
         Email:
       </div>
       <div>
-        Tech Stack: 
-      </div>
-      <div>
-        Hourly Rate: 
+        Company: 
       </div>
       <div>
         About: 
@@ -49,4 +46,4 @@ const DeveloperAboutMe = ({ username, history }) => {
   )
 }
 
-export default withRouter(DeveloperAboutMe);
+export default withRouter(EmployerAboutMe);

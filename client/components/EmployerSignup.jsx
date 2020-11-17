@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 
-const EmployerSignup = ({ isLoggedIn, isDevUser, history }) => {
+const EmployerSignup = ({ isLoggedIn, isDevUser, username, history }) => {
   return (
     <form>
       <p>Employer Signup</p>
@@ -33,6 +33,13 @@ const EmployerSignup = ({ isLoggedIn, isDevUser, history }) => {
           name='password'
           placeholder='Password'
           id='password'>
+        </input>
+        <label htmlFor='company'>Company (optional): </label>
+        <input
+          type='text'
+          name='company'
+          placeholder='Company'
+          id='company'>
         </input>
         <label htmlFor='aboutme'>Tell Us About Yourself: </label>
         <textarea
