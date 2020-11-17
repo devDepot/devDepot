@@ -8,6 +8,7 @@ import EmployerSignup from './components/EmployerSignup';
 import history from './components/history';
 import Homepage from './components/Homepage';
 import DeveloperAboutMe from './components/DeveloperAboutMe';
+import EmployerAboutMe from './components/EEmployerAboutMe';
 
 const App = () => {
   const [isLoggedIn, setLogin] = useState(false);
@@ -16,30 +17,54 @@ const App = () => {
   const [inCart, setCart] = useState([]);
   const [devSelected, setSelection] = useState(false);
   const [filterOptions, setFilterOptions] = useState([]);
+  const [username, setUsername] = useState('');
 
   return (
     <div>
       <Router history={history}>
         <Switch>
           <Route exact path="/" component={RegistrationPage}>
-            <RegistrationPage isLoggedIn={isLoggedIn} isDevUser={isDevUser} />
+            <RegistrationPage
+              isLoggedIn={isLoggedIn}
+              isDevUser={isDevUser}
+              username={username}
+            />
           </Route>
           <Route exact path="/dev-signup" component={DeveloperSignup}>
-            <DeveloperSignup isLoggedin={isLoggedIn} isDevUser={isDevUser} />
+            <DeveloperSignup
+              isLoggedin={isLoggedIn}
+              isDevUser={isDevUser}
+              username={username}
+            />
           </Route>
           <Route exact path="/employer-signup" component={EmployerSignup}>
-            <EmployerSignup isLoggedin={isLoggedIn} isDevUser={isDevUser} />
+            <EmployerSignup
+              isLoggedin={isLoggedIn}
+              isDevUser={isDevUser}
+              username={username}
+            />
           </Route>
-          //TODO: Determine which pieces of state passed here
           <Route exact path="/homepage" component={Homepage}>
-            <Homepage />
+            <Homepage
+              devs={devs}
+              inCart={inCart}
+              devSelected={devSelected}
+              filterOptions={filterOptions}
+              username={username}
+            />
           </Route>
-          //TODO: Determine which pieces of state passed here
           <Route exact path="/dev-aboutme" component={DeveloperAboutMe}>
-            <DeveloperAboutMe />
+            <DeveloperAboutMe username={username} />
+          </Route>
+          <Route exact path="/employer-aboutme" component={EmployerAboutMe}>
+            <EmployerAboutMe username={username} />
           </Route>
           <Route exact path="/login" component={LoginPage}>
-            <LoginPage isLoggedIn={isLoggedIn} isDevUser={isDevUser} />
+            <LoginPage
+              isLoggedIn={isLoggedIn}
+              isDevUser={isDevUser}
+              username={username}
+            />
           </Route>
         </Switch>
       </Router>

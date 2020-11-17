@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 
-const DeveloperSignup = ({ isLoggedIn, isDevUser, history }) => {
+const DeveloperSignup = ({ isLoggedIn, isDevUser, username, history }) => {
   return (
     <form>
       <p>Developer Signup</p>
