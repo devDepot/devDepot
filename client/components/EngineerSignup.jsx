@@ -3,7 +3,7 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 
 const EngineerSignup = ({ isLoggedIn, isEngineerUser, history }) => {
   return (
-    <div>
+    <form>
       <p>Engineer Signup</p>
         <label htmlFor='name'>Name: </label>
         <input
@@ -16,7 +16,7 @@ const EngineerSignup = ({ isLoggedIn, isEngineerUser, history }) => {
         <input
           type='text'
           name='email'
-          placeholder='email'
+          placeholder='Email'
           id='email'>
         </input>
         <label htmlFor='username'>Username: </label>
@@ -33,10 +33,34 @@ const EngineerSignup = ({ isLoggedIn, isEngineerUser, history }) => {
           placeholder='Password'
           id='password'>
         </input>
+        <label htmlFor='techStack'>Tech Stack: </label>
+        <select
+          name="techStack"
+          id="techStack"
+        >
+          <option value=""></option>
+          <option value="frontend">Frontend</option>
+          <option value="backend">Backend</option>
+          <option value="fullstack">Fullstack</option>
+        </select>
+        <label htmlFor='hourlyRate'>Hourly Rate: </label>
+        <input
+          type='text'
+          name='hourlyRate'
+          placeholder='Hourly Rate'
+          id='hourlyRate'>
+        </input>
+        <label htmlFor='aboutme'>Tell Us About Yourself: </label>
+        <textarea
+          type='text'
+          name='aboutme'
+          placeholder='Tell Us About Yourself...'
+          id='aboutme'>
+        </textarea>
         <button onClick={() => history.push('/engineer-aboutme')}>
           Signup
         </button>
-    </div>
+    </form>
   ) 
 }
 
