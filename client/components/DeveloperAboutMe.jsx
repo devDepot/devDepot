@@ -1,25 +1,45 @@
 import React, { useState } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 
-const DeveloperAboutMe = ({ username, history }) => {
+const DeveloperAboutMe = ({
+  isLoggedIn,
+  setIsLoggedIn,
+  isDevUser,
+  setUser,
+  username,
+  setUsername,
+  password,
+  setPassword,
+  email,
+  setEmail,
+  name,
+  setName,
+  techStack,
+  setTechStack,
+  hourlyRate,
+  setHourlyRate,
+  about,
+  setAbout,
+  history
+}) => {
   return (
     <div>
-      <p>Developer Profile</p>
-      <div>
-        Name: 
-      </div>
-      <div>
-        Email:
-      </div>
-      <div>
-        Tech Stack: 
-      </div>
-      <div>
-        Hourly Rate: 
-      </div>
-      <div>
-        About: 
-      </div>
+      <h2>Developer Profile</h2>
+      <span>
+        Name: {name}
+      </span>
+      <span>
+        Email: {email}
+      </span>
+      <span>
+        Tech Stack: {techStack}
+      </span>
+      <span>
+        Hourly Rate: {hourlyRate}
+      </span>
+      <span>
+        About: {about}
+      </span>
       {/* <div>
         <label htmlFor='addProfilePic'>Add a Profile Picture: </label>
         <input

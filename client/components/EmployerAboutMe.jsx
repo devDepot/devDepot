@@ -1,22 +1,42 @@
 import React, { useState } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 
-const EmployerAboutMe = ({ username, history }) => {
+const EmployerAboutMe = ({
+  isLoggedIn,
+  setIsLoggedIn,
+  isDevUser,
+  setUser,
+  username,
+  setUsername,
+  password,
+  setPassword,
+  email,
+  setEmail,
+  name,
+  setName,
+  techStack,
+  setTechStack,
+  hourlyRate,
+  setHourlyRate,
+  about,
+  setAbout,
+  history
+}) => {
   return (
     <div>
-      <p>Employer Profile</p>
-      <div>
-        Name: 
-      </div>
-      <div>
-        Email:
-      </div>
-      <div>
-        Company: 
-      </div>
-      <div>
-        About: 
-      </div>
+      <h2>Employer Profile</h2>
+      <span>
+        Name: {name}
+      </span>
+      <span>
+        Email: {email}
+      </span>
+      <span>
+        Company: {company}
+      </span>
+      <span>
+        About: {about}
+      </span>
       {/* <div>
         <label htmlFor='addProfilePic'>Add a Profile Picture: </label>
         <input
