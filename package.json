@@ -8,7 +8,8 @@
     "start": "nodemon server/server.js",
     "build": "NODE_ENV=production webpack",
     "dev": "npx webpack serve",
-    "both": "concurrently \"npx webpack serve\" \"nodemon server/server.js\""
+    "both": "concurrently \"npx webpack serve\" \"nodemon server/server.js\"",
+    "setup": "setup/builddb.sh"
   },
   "repository": {
     "type": "git",
