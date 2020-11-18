@@ -23,12 +23,19 @@ app.get('/auth', authController.setToken, (req, res) => {
 });
 
 //endpoint to create a new session
-app.get('/login', authController.logIn, (req, res) => {
+app.get('/login', authController.logIn, authController.setToken, (req, res) => {
   res.sendStatus(200);
 });
 
 // //endpoint to insert a new user in the database
-app.post('/user', userController.createUser, (req, res) => {});
+app.post(
+  '/user',
+  userController.createUser,
+  authController.setToken,
+  (req, res) => {
+    res.status(200).send(res.locals);
+  }
+);
 
 // //endpoint to update user information
 // app.put('/user/:id', /* USER MIDDLEWARE */, (req, res) => {});
