@@ -8,7 +8,7 @@ const addToCart = ({ inCart, setInCart, devSelected, setDevSelected }) => {
   if (devSelected) {
     alert("This Developer has already been added to your cart!");
   }
-  
+
 }
 
 const showAllDevs = ({ devs, setDevs }) => {
@@ -25,7 +25,7 @@ const showAllDevs = ({ devs, setDevs }) => {
     <div>
       <div className="dev-cards">
         {devs}
-        <button id=onClick={} />
+        <button onClick={addToCart} />
       </div>
     </div>
   );
@@ -34,7 +34,6 @@ const showAllDevs = ({ devs, setDevs }) => {
 
 
 const Homepage = ({ user, history, inCart, setInCart, devSelected, setDevSelected }) => {
-  if ()
   return (
     <div>
       <Navbar />
