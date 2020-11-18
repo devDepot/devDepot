@@ -18,9 +18,8 @@ app.use(express.static(path.resolve(__dirname, '../client/')));
 app.use(express.static(path.resolve(__dirname, '../client/public/')));
 
 //endpoint to check sessions in database, returns true or false
-app.get('/auth', authController.setCookie, (req, res) => {
-  console.log('in server.js');
-  res.status(200).send('howdy');
+app.get('/auth', authController.setToken, (req, res) => {
+  res.status(200).json(res.locals);
 });
 
 // //endpoint to create a new session
