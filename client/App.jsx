@@ -9,7 +9,7 @@ import history from './components/history';
 import Homepage from './components/Homepage';
 import DeveloperAboutMe from './components/DeveloperAboutMe';
 import EmployerAboutMe from './components/EmployerAboutMe';
-import Navbar from './components/Navbar';
+import NavBar from './components/NavBar'
 
 const App = () => {
   const [isLoggedIn, setLogin] = useState(false);
@@ -30,7 +30,6 @@ const App = () => {
   return (
     <div>
       <Router history={history}>
-        <Navbar />
         <Switch>
           <Route exact path="/" component={RegistrationPage}>
             <RegistrationPage

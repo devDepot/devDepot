@@ -38,15 +38,7 @@ const DeveloperSignup = ({
     }),
   };
 
-  const registerDev = (
-    name,
-    email,
-    username,
-    password,
-    techStack,
-    hourlyRate,
-    about
-  ) => {
+  const registerDev = () => {
     fetch('/user', requestHeaders)
       .then(res => res.json())
       .then(data => {
