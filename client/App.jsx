@@ -19,6 +19,13 @@ const App = () => {
   const [devSelected, setSelection] = useState(false);
   const [filterOptions, setFilterOptions] = useState([]);
   const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [techStack, setTechStack] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [about, setAbout] = useState('');
+  const [company, setCompany] = useState('');
+  const [hourlyRate, setHourlyRate] = useState('');
 
   return (
     <div>
@@ -56,16 +63,32 @@ const App = () => {
             />
           </Route>
           <Route exact path="/dev-aboutme" component={DeveloperAboutMe}>
-            <DeveloperAboutMe username={username} />
+            <DeveloperAboutMe
+              username={username}
+              password={password}
+              email={email}
+              name={name}
+              techStack={techStack}
+              hourlyRate={hourlyRate}
+              about={about}
+            />
           </Route>
           <Route exact path="/employer-aboutme" component={EmployerAboutMe}>
-            <EmployerAboutMe username={username} />
+            <EmployerAboutMe
+              username={username}
+              password={password}
+              email={email}
+              name={name}
+              company={company}
+              about={about}
+            />
           </Route>
           <Route exact path="/login" component={LoginPage}>
             <LoginPage
               isLoggedIn={isLoggedIn}
               isDevUser={isDevUser}
               username={username}
+              password={password}
             />
           </Route>
         </Switch>
