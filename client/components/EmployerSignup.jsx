@@ -39,15 +39,7 @@ const EmployerSignup = ({
     }),
   };
 
-  const registerEmployer = (
-    name,
-    email,
-    username,
-    password,
-    techStack,
-    hourlyRate,
-    about
-  ) => {
+  const registerEmployer = () => {
     fetch('/user', requestHeaders)
       .then(res => res.json())
       .then(data => {
