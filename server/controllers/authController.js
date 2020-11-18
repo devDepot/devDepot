@@ -20,21 +20,21 @@ authController.setToken = (req, res, next) => {
   return next();
 };
 
-authController.isLoggedIn = (req, res, next) => {
+authController.is_logged_in = (req, res, next) => {
   //check if devdepot_session exists - if not the return false(not logged in)
   //to frontend
   //if exists, verify
 
-  //TODO: frontend wants to be sent username, isDevUser, isLoggedIn
+  //TODO: frontend wants to be sent username, isDevUser, is_logged_in
   const token = req.cookies; //TODO: what does req.cookies look like
   console.log('req.cookies', req.cookies);
 
   jwt.verify(token, secret, (err, decoded) => {
     if (err) {
-      res.locals.isLoggedIn = false;
+      res.locals.is_logged_in = false;
       return next();
     } else {
-      res.locals.isLoggedIn = true;
+      res.locals.is_logged_in = true;
       //query db with decoded user id and get user info to send to front end
       //   db.query('SELECT ;')
       console.log('this is decoded', decoded);

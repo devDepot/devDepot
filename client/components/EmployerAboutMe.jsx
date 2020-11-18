@@ -2,24 +2,24 @@ import React, { useState } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 
 const EmployerAboutMe = ({
-  isLoggedIn,
-  setIsLoggedIn,
+  is_logged_in,
+  set_login,
   isDevUser,
   setUser,
   username,
-  setUsername,
+  set_username,
   password,
-  setPassword,
+  set_password,
   email,
-  setEmail,
+  set_email,
   name,
   setName,
-  techStack,
-  setTechStack,
-  hourlyRate,
-  setHourlyRate,
+  stack,
+  set_stack,
+  hourly_rate,
+  set_hourly_rate,
   about,
-  setAbout,
+  set_about,
   history
 }) => {
   return (

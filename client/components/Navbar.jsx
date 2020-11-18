@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // TODO: add a cart
-const Navbar = () => {
+const Navbar = ({}) => {
   return (
     <div>
       <span>

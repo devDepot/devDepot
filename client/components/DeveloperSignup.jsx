@@ -2,24 +2,24 @@ import React, { useState } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 
 const DeveloperSignup = ({ 
-  isLoggedIn,
-  setIsLoggedIn,
-  isDevUser,
-  setUser,
+  is_logged_in,
+  set_login,
+  is_dev_user,
+  set_user,
   username,
-  setUsername,
+  set_username,
   password,
-  setPassword,
+  set_password,
   email,
-  setEmail,
+  set_email,
   name,
-  setName,
-  techStack,
-  setTechStack,
-  hourlyRate,
-  setHourlyRate,
+  set_name,
+  stack,
+  set_stack,
+  hourly_rate,
+  set_hourly_rate,
   about,
-  setAbout,
+  set_about,
   history
 }) => {
 
@@ -31,9 +31,10 @@ const DeveloperSignup = ({
       email: email,
       username: username,
       password: password,
-      techStack: techStack,
-      hourlyRate: hourlyRate,
+      stack: stack,
+      hourly_rate: hourly_rate,
       about: about,
+      active: true,
       userType: 'Developer',
     }),
   };
@@ -72,7 +73,7 @@ const DeveloperSignup = ({
           placeholder='Email'
           id='email'
           onChange={(e) => {
-            setEmail(e.target.value)
+            set_email(e.target.value)
           }}
           value={email}
         >
@@ -84,7 +85,7 @@ const DeveloperSignup = ({
           placeholder='Username'
           id='username'
           onChange={(e) => {
-            setUsername(e.target.value)
+            set_username(e.target.value)
           }}
           value={username}
         >
@@ -96,26 +97,26 @@ const DeveloperSignup = ({
           placeholder='Password'
           id='password'
           onChange={(e) => {
-            setPassword(e.target.value)
+            set_password(e.target.value)
           }}
           value={password}
         >
         </input>
-        <label htmlFor='techStack'>Tech Stack: </label>
+        <label htmlFor='stack'>Tech Stack: </label>
         <select
-          name="techStack"
-          id="techStack"
+          name="stack"
+          id="stack"
           onChange={(e) => {
-            setTechStack(e.target.value)
+            set_stack(e.target.value)
           }}
-          value={techStack}
+          value={stack}
         >
           <option value=""></option>
           <option value="frontend">Frontend</option>
           <option value="backend">Backend</option>
           <option value="fullstack">Fullstack</option>
         </select>
-        <label htmlFor='hourlyRate'>Hourly Rate: </label>
+        <label htmlFor='hourly_rate'>Hourly Rate: </label>
         <input
           type='text'
           name='hourlyRate'
@@ -124,7 +125,7 @@ const DeveloperSignup = ({
           onChange={(e) => {
             setHourlyRate(e.target.value)
           }}
-          value={hourlyRate}
+          value={hourly-rate}
         >
         </input>
         <label htmlFor='aboutme'>Tell Us About Yourself: </label>
@@ -134,7 +135,7 @@ const DeveloperSignup = ({
           placeholder='Tell Us About Yourself...'
           id='aboutme'
           onChange={(e) => {
-            setAbout(e.target.value)
+            set_about(e.target.value)
           }}
           value={about}
         >

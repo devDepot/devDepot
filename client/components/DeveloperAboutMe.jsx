@@ -2,24 +2,24 @@ import React, { useState } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 
 const DeveloperAboutMe = ({
-  isLoggedIn,
-  setIsLoggedIn,
-  isDevUser,
+  is_logged_in,
+  set_login,
+  is_dev_user,
   setUser,
   username,
-  setUsername,
+  set_username,
   password,
-  setPassword,
+  set_password,
   email,
-  setEmail,
+  set_email,
   name,
   setName,
-  techStack,
-  setTechStack,
-  hourlyRate,
-  setHourlyRate,
+  stack,
+  set_stack,
+  hourly_rate,
+  set_hourly_rate,
   about,
-  setAbout,
+  set_about,
   history
 }) => {
   return (
@@ -32,10 +32,10 @@ const DeveloperAboutMe = ({
         Email: {email}
       </span>
       <span>
-        Tech Stack: {techStack}
+        Tech Stack: {stack}
       </span>
       <span>
-        Hourly Rate: {hourlyRate}
+        Hourly Rate: {hourly_rate}
       </span>
       <span>
         About: {about}

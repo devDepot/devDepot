@@ -3,24 +3,24 @@ import React, { useState } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 
 const EmployerSignup = ({
-  isLoggedIn,
-  setIsLoggedIn,
-  isDevUser,
-  setUser,
+  is_logged_in,
+  set_login,
+  is_dev_user,
+  set_user,
   username,
-  setUsername,
+  set_username,
   password,
-  setPassword,
+  set_password,
   email,
-  setEmail,
+  set_email,
   name,
   setName,
-  techStack,
-  setTechStack,
-  hourlyRate,
-  setHourlyRate,
+  stack,
+  set_stack,
+  hourly_rate,
+  set_hourly_rate,
   about,
-  setAbout,
+  set_about,
   history 
 }) => {
 
@@ -32,8 +32,8 @@ const EmployerSignup = ({
       email: email,
       username: username,
       password: password,
-      techStack: techStack,
-      hourlyRate: hourlyRate,
+      stack: stack,
+      hourly_rate: hourly_rate,
       about: about,
       userType: 'Employer',
     }),
@@ -41,8 +41,8 @@ const EmployerSignup = ({
 
   const registerEmployer = () => {
     fetch('/user', requestHeaders)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         if (res.status === 200) {
           history.push('/homepage');
         } else {
@@ -73,7 +73,7 @@ const EmployerSignup = ({
           placeholder='email'
           id='email'
           onChange={(e) => {
-            setEmail(e.target.value)
+            set_email(e.target.value)
           }}
           value={email}
         >
@@ -85,7 +85,7 @@ const EmployerSignup = ({
           placeholder='Username'
           id='username'
           onChange={(e) => {
-            setUsername(e.target.value)
+            set_username(e.target.value)
           }}
           value={username}
         >
@@ -109,7 +109,7 @@ const EmployerSignup = ({
           placeholder='Company'
           id='company'
           onChange={(e) => {
-            setCompany(e.target.value)
+            set_company(e.target.value)
           }}
           value={company}
         >
@@ -126,7 +126,7 @@ const EmployerSignup = ({
           value={about}
         >
         </textarea>
-        <button onClick={() => history.push('/homepage')}>
+        <button onClick={registerEmployer}>
           Signup
         </button>
     </form>
