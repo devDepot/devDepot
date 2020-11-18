@@ -27,7 +27,7 @@ userController.createUser = (req, res, next) => {
     email,
     username,
     password,
-    techStack,
+    stack,
     hourlyRate,
     about,
     userType,

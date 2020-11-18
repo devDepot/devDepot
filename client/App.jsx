@@ -2,30 +2,31 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 import RegistrationPage from './components/RegistrationPage';
-import LoginPage from './components/LoginPage'
+import LoginPage from './components/LoginPage';
 import DeveloperSignup from './components/DeveloperSignup';
 import EmployerSignup from './components/EmployerSignup';
 import history from './components/history';
 import Homepage from './components/Homepage';
 import DeveloperAboutMe from './components/DeveloperAboutMe';
 import EmployerAboutMe from './components/EmployerAboutMe';
-import NavBar from './components/NavBar'
+import AboutMe from './components/AboutMe';
+import UserContainer from './components/UserContainer';
 
 const App = () => {
-  const [isLoggedIn, setLogin] = useState(false);
-  const [isDevUser, setUser] = useState(false);
-  const [devs, setDevs] = useState([]);
-  const [inCart, setCart] = useState([]);
-  const [devSelected, setSelection] = useState(false);
-  const [filterOptions, setFilterOptions] = useState([]);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [techStack, setTechStack] = useState('');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [about, setAbout] = useState('');
-  const [company, setCompany] = useState('');
-  const [hourlyRate, setHourlyRate] = useState('');
+  const [is_logged_in, set_login] = useState(false);
+  const [is_dev_user, set_user] = useState(false);
+  const [devs, set_devs] = useState([]);
+  const [in_cart, set_cart] = useState([]);
+  const [dev_selected, set_selection] = useState(false);
+  const [filter_options, set_filter_options] = useState([]);
+  const [username, set_username] = useState('');
+  const [password, set_password] = useState('');
+  const [stack, set_stack] = useState('');
+  const [name, set_name] = useState('');
+  const [email, set_email] = useState('');
+  const [about, set_about] = useState('');
+  const [company, set_company] = useState('');
+  const [hourly_rate, set_hourly_rate] = useState('');
 
   return (
     <div>
@@ -33,31 +34,34 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={RegistrationPage}>
             <RegistrationPage
-              isLoggedIn={isLoggedIn}
-              isDevUser={isDevUser}
+              is_logged_in={is_logged_in}
+              is_dev_user={is_dev_user}
               username={username}
             />
           </Route>
           <Route exact path="/dev-signup" component={DeveloperSignup}>
             <DeveloperSignup
-              isLoggedin={isLoggedIn}
-              isDevUser={isDevUser}
+              is_logged_in={is_logged_in}
+              is_dev_user={is_dev_user}
               username={username}
             />
           </Route>
           <Route exact path="/employer-signup" component={EmployerSignup}>
             <EmployerSignup
-              isLoggedin={isLoggedIn}
-              isDevUser={isDevUser}
+              is_logged_in={is_logged_in}
+              is_dev_user={is_dev_user}
               username={username}
             />
+          </Route>
+          <Route exact path="/user-container" component={UserContainer}>
+            <UserContainer is_dev_user={is_dev_user} />
           </Route>
           <Route exact path="/homepage" component={Homepage}>
             <Homepage
               devs={devs}
-              inCart={inCart}
-              devSelected={devSelected}
-              filterOptions={filterOptions}
+              in_cart={in_cart}
+              dev_selected={dev_selected}
+              filter_options={filter_options}
               username={username}
             />
           </Route>
@@ -67,8 +71,8 @@ const App = () => {
               password={password}
               email={email}
               name={name}
-              techStack={techStack}
-              hourlyRate={hourlyRate}
+              stack={stack}
+              hourly_rate={hourly_rate}
               about={about}
             />
           </Route>
@@ -82,10 +86,20 @@ const App = () => {
               about={about}
             />
           </Route>
+          <Route exact path="/aboutme" component={AboutMe}>
+            <AboutMe
+              username={username}
+              password={password}
+              email={email}
+              name={name}
+              company={company}
+              about={about}
+            />
+          </Route>
           <Route exact path="/login" component={LoginPage}>
             <LoginPage
-              isLoggedIn={isLoggedIn}
-              isDevUser={isDevUser}
+              is_logged_in={is_logged_in}
+              is_dev_user={is_dev_user}
               username={username}
               password={password}
             />

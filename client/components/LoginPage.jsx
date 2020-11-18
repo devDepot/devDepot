@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import history from 'history';
 
-const LoginPage = ({ isLoggedIn, setIsLoggedIn, isDevUser, setUser, username, setUsername, password, setPassword, history }) => {
+const LoginPage = ({ is_logged_in, set_login, is_dev_user, set_user, username, set_username, password, set_password, history }) => {
   const requestHeaders = {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
@@ -12,7 +12,7 @@ const LoginPage = ({ isLoggedIn, setIsLoggedIn, isDevUser, setUser, username, se
     }),
   };
 
-  const directUser = (username, password) => {
+  const directUser = () => {
     fetch('/auth', requestHeaders)
       .then(res => res.json())
       .then(data => {
@@ -31,7 +31,7 @@ const LoginPage = ({ isLoggedIn, setIsLoggedIn, isDevUser, setUser, username, se
           placeholder='Username'
           id='username'
           onChange={(e) => {
-            setUsername(e.target.value)
+            set_username(e.target.value)
           }}
           value={username}
           >
@@ -43,7 +43,7 @@ const LoginPage = ({ isLoggedIn, setIsLoggedIn, isDevUser, setUser, username, se
           placeholder='Password'
           id='password'
           onChange={(e) => {
-            setUsername(e.target.value)
+            set_password(e.target.value)
           }}
           value={password}
           >

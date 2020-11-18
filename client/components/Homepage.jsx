@@ -3,43 +3,24 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 import DevCard from './DevCard';
 import Navbar from './Navbar';
 
-// TODO: once dev has been added to cart, prevent
-const addToCart = ({ inCart, setInCart, devSelected, setDevSelected }) => {
-  if (devSelected) {
+// TODO: once dev has been added to cart, prevent default clicking
+
+const addToCart = ({ inCart, setInCart, dev_selected, set_dev_selected }) => {
+  if (dev_selected) {
     alert('This Developer has already been added to your cart!');
   }
 };
 
-const showAllDevs = ({ devs, setDevs }) => {
-  const allDevs = [];
-
-  fetch('/developers')
-    .then((res) => res.json())
-    .then((data) => {
-      setDevs([data.developers]);
-      allDevs.forEach((dev) => devs.push(<DevCard />));
-    });
+const Homepage = ({ username, is_dev_user, history, in_cart, set_in_cart, dev_selected, set_dev_selected, devs, set_devs }) => {
 
   return (
     <div>
-      <div className="dev-cards">
-        {allDevs}
-        <button onClick={addToCart} />
-      </div>
-    </div>
-  );
-};
-
-const Homepage = ({ user, history, inCart, setInCart, devSelected, setDevSelected }) => {
-  return (
-    <div>
-      <Navbar />
       <h1>
         Hello,
-        {user}
+        {username}
       </h1>
       <div>
-        <showAllDevs />
+        <DevCard />
       </div>
     </div>
   );

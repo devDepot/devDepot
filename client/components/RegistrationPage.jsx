@@ -2,23 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import history from 'history';
 
-const RegistrationPage = ({ isLoggedIn, setIsLoggedIn, isDevUser, setUser, username, setUsername, history }) => {
+const RegistrationPage = ({ is_logged_in, set_login, is_dev_user, set_user, username, set_username, history }) => {
   // If a user is logged in they should not have access to signup or login, they will be redirected straight to respective homepage
 
   useEffect(() => {
     fetch('/auth')
       .then(res => res.json())
       .then(data => {
-        if (data.isLoggedIn) setIsLoggedIn(true);
-        if (data.isDevUser) setUser(true);
-        if (data.username) setUsername(data.username);
+        if (data.is_logged_in) set_login(true);
+        if (data.is_dev_user) set_user(true);
+        if (data.username) set_username(data.username);
       });
   }, []);
 
-  if (isLoggedIn && isDevUser) {
+  // TODO: this logic should change once app hooked up
+  if (is_logged_in && is_dev_user) {
     return <Redirect to="/dev-aboutme" />;
   };
-  if (isLoggedIn && !isDevUser) {
+  if (is_logged_in && !is_dev_user) {
     return <Redirect to="/homepage" />;
   };
 
@@ -36,6 +37,7 @@ const RegistrationPage = ({ isLoggedIn, setIsLoggedIn, isDevUser, setUser, usern
           </button>
         </div>
         <br></br>
+        // TODO: make hyperlink attached to 'here' be visable as such
         <div>Already have an account? Login <Link to="/login">here</Link></div>
       </form>
     </div>
