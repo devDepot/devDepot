@@ -9,19 +9,11 @@ const authController = {};
 const secret = process.env.SECRET;
 
 authController.setToken = (req, res, next) => {
-  //TODO: have frontend send username/user info
-  //currently using placeholder values
-  //user should be unique user id number from db - query or should earlier middleware
-  //send with? add user type
-  //secret should be an environment variable
   //expiresIn is currently set to 60 seconds for testing
-  const token = jwt.sign(
-    { user: 'USERID REPLACE THIS', userType: 'EMPLOYER/DEVELOPER' },
-    secret,
-    {
-      expiresIn: 60,
-    }
-  );
+  const { username, userType } = req.body;
+  const token = jwt.sign({ username, userType }, secret, {
+    expiresIn: 60,
+  });
 
   res.locals.token = token;
 
@@ -58,9 +50,12 @@ authController.logIn = (req, res, next) => {
   console.log('req.body', req.body);
   const params = [req.body.username];
 
-  db.query('SELECT password FROM accounts WHERE username = $1', params).then(
-    (rows) => {
-      console.log('this is rows', rows);
+  db.query(
+    'SELECT password FROM accounts WHERE username = $1',
+    params,
+    (err, rows) => {
+      if (err) return next(err);
+      console.log('ROWSS login', rows);
     }
   );
 };
