@@ -23,15 +23,21 @@ const RegistrationPage = ({ isLoggedIn, setIsLoggedIn, isDevUser, setUser, usern
   };
 
   return (
-    <div>
-      <p>DevDepot</p>
-      <button onClick={() => history.push('/dev-signup')}>
-        Developer
-      </button>
-      <button onClick={() => history.push('/employer-signup')}>
-        Looking to Hire
-      </button>
-      <div>Already have an account? Login <Link to="/login">here</Link></div>
+    <div className="flex justify-center content-center w-1/4 m-auto my-64 shadow-xl">
+      <form className="flex flex-col justify-center items-center border-solid border border-blue-600 py-4 px-4 rounded">
+        <h1 className="text-2xl">DevDepot</h1>
+        <div className="space-x-3">
+          <br></br>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => history.push('/dev-signup')}>
+            Developer
+          </button>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => history.push('/employer-signup')}>
+            Employer
+          </button>
+        </div>
+        <br></br>
+        <div>Already have an account? Login <Link to="/login">here</Link></div>
+      </form>
     </div>
   );
 };
