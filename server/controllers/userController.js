@@ -5,22 +5,6 @@ const saltRounds = 10;
 
 const userController = {};
 
-// userController./*POST*/ = async (req,res,next) => {
-//     try {
-
-//         const username = req.body.username;
-//         const password = req.body.password;
-//         const email = req.body.email;
-//         const session = req.body.session;
-//         const userType = req.body.userType;
-
-//         // const query = `INSERT `
-
-//     } catch(err) {
-//         return next(err);
-//     }
-// }
-
 userController.createUser = (req, res, next) => {
   const {
     name,
@@ -48,5 +32,9 @@ userController.createUser = (req, res, next) => {
 
   console.log('req body', req.body);
 };
+
+
+
+
 
 module.exports = userController;
