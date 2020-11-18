@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 
-// TODO: pass dev name and stack down as props from App componenet
-// TODO: onClick / onHover modal should show up with about me
+// devs prop will be an array of objects
 
-const DevCard = () => {
+const DevCard = ({ name, techStack, hourlyRate }) => {
   return (
     <div className="dev-card">
       <img src="#" alt="dev-pic" />
       <h4>
-        <b>Dev Name</b>
+        <b>{name}</b>
       </h4>
-      <p>Tech Stack: </p>
-      <p>Hourly Rate: </p>
+      <p>
+        Tech Stack:
+        {techStack}
+      </p>
+      <p>
+        Hourly Rate:
+        {hourlyRate}
+      </p>
     </div>
-  )
-}
+  );
+};
 
 export default DevCard;

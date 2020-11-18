@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+// TODO: add a cart
 const Navbar = () => {
   return (
-    <ul>
-      <li>
-        <Link to="/homepage">About</Link>
-      </li>
-    </ul>
+    <div>
+      <span>
+        <Link to="/homepage">Home</Link>
+      </span>
+    </div>
   );
 };
 
