@@ -1,4 +1,5 @@
 const { json } = require('express');
+const dotenv = require('dotenv').config();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -6,7 +7,7 @@ const authController = {};
 
 const secret = process.env.SECRET;
 
-authController.setCookie = (req, res, next) => {
+authController.setToken = (req, res, next) => {
   //TODO: have frontend send username/user info
   //currently using placeholder values
   //user should be unique user id number from db - query or should earlier middleware
@@ -20,7 +21,8 @@ authController.setCookie = (req, res, next) => {
       expiresIn: 60,
     }
   );
-  res.cookie('devdepot_sid', token, { httpOnly: true, secure: true });
+
+  res.locals.token = token;
 
   return next();
 };
@@ -29,6 +31,8 @@ authController.isLoggedIn = (req, res, next) => {
   //check if devdepot_session exists - if not the return false(not logged in)
   //to frontend
   //if exists, verify
+
+  //TODO: frontend wants to be sent username, isDevUser, isLoggedIn
   const token = req.cookies; //TODO: what does req.cookies look like
   console.log('req.cookies', req.cookies);
 
