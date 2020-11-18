@@ -6,7 +6,7 @@ const authController = require('./controllers/authController.js');
 const userController = require('./controllers/userController.js');
 const viewsController = require('./controllers/viewsController.js');
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 app.use(cors());
 app.use(express.json());
@@ -23,19 +23,33 @@ app.get('/auth', authController.setToken, (req, res) => {
 });
 
 //endpoint to create a new session
-app.get('/login', authController.logIn, (req, res) => {
+app.get('/login', authController.logIn, authController.setToken, (req, res) => {
   res.sendStatus(200);
 });
 
 // //endpoint to insert a new user in the database
-app.post('/user', userController.createUser, (req, res) => {});
+app.post(
+  '/user',
+  userController.createUser,
+  authController.setToken,
+  (req, res) => {
+    res.status(200).send(res.locals);
+  }
+);
 
 // //endpoint to update user information
 // app.put('/user/:id', /* USER MIDDLEWARE */, (req, res) => {});
 
 // //endpoint to display developers, should return either all developers or
 // //all developers that match filters
-// app.get('/developers', /* VIEWS MIDDLEWARE */, (req, res) => {});
+app.get('/developers', viewsController.getDevelopers, (req, res) => {
+  console.log('res.locals.developers', res.locals.developers)
+  res.status(200).json(res.locals.developers);
+});
+
+app.get('/developers/:stack', viewsController.getDeveloperStack, (req, res) => {
+  res.status(200).json(res.locals.stack);
+});
 
 // Local Err handler
 app.use('*', (req, res) => {

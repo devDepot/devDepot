@@ -21,32 +21,79 @@ const userController = {};
 //     }
 // }
 
-userController.createUser = (req, res, next) => {
-  const {
-    name,
-    email,
-    username,
-    password,
-    stack,
-    hourlyRate,
-    about,
-    userType,
-  } = req.body;
+userController.createUser = async (req, res, next) => {
+  const { username, password, email, userType } = req.body;
 
-  bcrypt.hash(password, saltRounds, async (err, hash) => {
-    console.log('hash', typeof hash);
+  await bcrypt.hash(password, saltRounds, async (err, hash) => {
     const params = [username, hash, email];
-    const id = await db.query(
-      'INSERT INTO accounts (username, password, email) VALUES ($1, $2, $3);',
+    db.query(
+      `INSERT INTO accounts (username, password, email) 
+          VALUES ($1, $2, $3);`,
       params,
       (err, rows) => {
         if (err) return next(err);
-        console.log('rows?', rows);
       }
     );
   });
+  if (userType === 'Developer') {
+    const { name, stack, about, hourly_rate } = req.body;
+    const params = [name, stack, about, hourly_rate, true, username];
+    db.query(
+      `INSERT INTO developers 
+    (name, 
+    stack,
+    about,
+    hourly_rate,
+    active,
+    account_id) VALUES 
+    ($1, $2, $3, $4, $5, 
+    (SELECT _id FROM accounts WHERE username = $6));`,
+      params,
+      (err, rows) => {
+        if (err) return next(err);
+        return next();
+      }
+    );
+  } else if (req.body.company) {
+    const { name, about, company } = req.body;
+    const params = [name, about, company, username];
+    db.query(
+      `INSERT INTO employers 
+    (name, 
+    about,
+    company,
+    account_id) VALUES 
+    ($1, $2, $3, 
+    (SELECT _id FROM accounts WHERE username = $4));`,
+      params,
+      (err, rows) => {
+        if (err) return next(err);
+        return next();
+      }
+    );
+  } else {
+    const { name, about } = req.body;
+    const params = [name, about, username];
+    db.query(
+      `INSERT INTO employers 
+    (name, 
+    about,
+    account_id) VALUES 
+    ($1, $2, 
+    (SELECT _id FROM accounts WHERE username = $3));`,
+      params,
+      (err, rows) => {
+        if (err) return next(err);
+        return next();
+      }
+    );
+  }
 
   console.log('req body', req.body);
 };
+
+
+
+
 
 module.exports = userController;
