@@ -22,11 +22,13 @@ app.get('/auth', authController.setToken, (req, res) => {
   res.status(200).json(res.locals);
 });
 
-// //endpoint to create a new session
-// app.put('/login', /* AUTH MIDDLEWARE */, (req, res) => {});
+//endpoint to create a new session
+app.get('/login', authController.logIn, (req, res) => {
+  res.sendStatus(200);
+});
 
 // //endpoint to insert a new user in the database
-// app.post('/user', /* USER MIDDLEWARE */, (req, res) => {});
+app.post('/user', userController.createUser, (req, res) => {});
 
 // //endpoint to update user information
 // app.put('/user/:id', /* USER MIDDLEWARE */, (req, res) => {});

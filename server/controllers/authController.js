@@ -2,6 +2,7 @@ const { json } = require('express');
 const dotenv = require('dotenv').config();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const db = require('../models/DbModel.js');
 
 const authController = {};
 
@@ -43,6 +44,7 @@ authController.isLoggedIn = (req, res, next) => {
     } else {
       res.locals.isLoggedIn = true;
       //query db with decoded user id and get user info to send to front end
+      //   db.query('SELECT ;')
       console.log('this is decoded', decoded);
       return next();
     }
@@ -53,6 +55,14 @@ authController.logIn = (req, res, next) => {
   //select password where username is inputted username
   //use bcrypt.compare against result
   //bcrypt.compare(my plaintext password)
+  console.log('req.body', req.body);
+  const params = [req.body.username];
+
+  db.query('SELECT password FROM accounts WHERE username = $1', params).then(
+    (rows) => {
+      console.log('this is rows', rows);
+    }
+  );
 };
 
 module.exports = authController;
