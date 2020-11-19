@@ -35,24 +35,24 @@ const DeveloperSignup = ({
       hourly_rate: hourly_rate,
       about: about,
       active: true,
-      userType: 'Developer',
+      user_type: 'Developer',
     }),
   };
 
   const registerDev = () => {
-    fetch('/user', requestHeaders).then((res) => {
+    fetch('http://localhost:3000/user', requestHeaders).then((res) => {
       if (res.status === 200) {
         set_login(true);
         set_user(true);
-        history.push('/homepage');
+        history.push('/user-container');
       } else {
-        history.push('/employer-signup');
+        history.push('/dev-signup');
       }
     });
   };
   
   return (
-    <form>
+    <div>
       <p>Developer Signup</p>
         <label htmlFor='name'>Name: </label>
         <input
@@ -143,7 +143,7 @@ const DeveloperSignup = ({
         <button onClick={registerDev}>
           Signup
         </button>
-    </form>
+    </div>
   ) 
 }
 

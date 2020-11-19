@@ -16,7 +16,7 @@ const App = () => {
   const [is_dev_user, set_user] = useState(false);
   const [devs, set_devs] = useState([]);
   const [in_cart, set_cart] = useState([]);
-  const [dev_selected, set_selection] = useState(false);
+  const [dev_selected, set_dev_selected] = useState(false);
   const [filter_options, set_filter_options] = useState([]);
   const [username, set_username] = useState('');
   const [password, set_password] = useState('');
@@ -34,14 +34,43 @@ const App = () => {
           <Route exact path="/" component={RegistrationPage}>
             <RegistrationPage
               is_logged_in={is_logged_in}
+              set_login={set_login}
               is_dev_user={is_dev_user}
+              set_user={set_user}
               username={username}
+              set_username={set_username}
+            />
+          </Route>
+          <Route exact path="/login" component={LoginPage}>
+            <LoginPage
+              is_logged_in={is_logged_in}
+              set_login={set_login}
+              is_dev_user={is_dev_user}
+              set_user={set_user}
+              username={username}
+              set_username={set_username}
+              password={password}
+              set_password={set_password}
+              name={name}
+              set_name={set_name}
+              stack={stack}
+              set_stack={set_stack}
+              hourly_rate={hourly_rate}
+              set_hourly_rate={set_hourly_rate}
+              email={email}
+              set_email={set_email}
+              company={company}
+              set_company={set_company}
+              about={about}
+              set_about={set_about}
             />
           </Route>
           <Route exact path="/dev-signup" component={DeveloperSignup}>
             <DeveloperSignup
               is_logged_in={is_logged_in}
+              set_login={set_login}
               is_dev_user={is_dev_user}
+              set_user={set_user}
               username={username}
               set_username={set_username}
               password={password}
@@ -61,9 +90,9 @@ const App = () => {
           <Route exact path="/employer-signup" component={EmployerSignup}>
             <EmployerSignup
               is_logged_in={is_logged_in}
-              set_is_logged_in={set_login}
+              set_login={set_login}
               is_dev_user={is_dev_user}
-              set_is_dev_user={set_user}
+              set_user={set_user}
               username={username}
               set_username={set_username}
               password={password}
@@ -79,7 +108,27 @@ const App = () => {
             />
           </Route>
           <Route exact path="/user-container" component={UserContainer}>
-            <UserContainer is_dev_user={is_dev_user} />
+            <UserContainer
+              is_dev_user={is_dev_user}
+              username={username}
+              set_username={set_username}
+              name={name}
+              set_name={set_name}
+              stack={stack}
+              set_stack={set_stack}
+              hourly_rate={hourly_rate}
+              set_hourly_rate={set_hourly_rate}
+              about={about}
+              set_about={set_about}
+              email={email}
+              set_email={set_email}
+              devs={devs}
+              set_devs={set_devs}
+              dev_selected={dev_selected}
+              set_dev_selected={set_dev_selected}
+              in_cart={in_cart}
+              set_cart={set_cart}
+            />
           </Route>
           <Route exact path="/homepage" component={Homepage}>
             <Homepage
@@ -87,7 +136,7 @@ const App = () => {
               in_cart={in_cart}
               dev_selected={dev_selected}
               filter_options={filter_options}
-              username={username}
+              name={name}
             />
           </Route>
           <Route exact path="/dev-aboutme" component={DeveloperAboutMe}>
@@ -109,14 +158,6 @@ const App = () => {
               name={name}
               company={company}
               about={about}
-            />
-          </Route>
-          <Route exact path="/login" component={LoginPage}>
-            <LoginPage
-              is_logged_in={is_logged_in}
-              is_dev_user={is_dev_user}
-              username={username}
-              password={password}
             />
           </Route>
         </Switch>

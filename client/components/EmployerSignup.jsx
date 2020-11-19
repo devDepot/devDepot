@@ -37,15 +37,15 @@ const EmployerSignup = ({
       stack: stack,
       hourly_rate: hourly_rate,
       about: about,
-      userType: 'Employer',
+      user_type: 'Employer',
     }),
   };
 
   const registerEmployer = () => {
-    fetch('/user', requestHeaders).then((res) => {
+    fetch('http://localhost:3000/user', requestHeaders).then((res) => {
       if (res.status === 200) {
         set_login(true);
-        history.push('/homepage');
+        history.push('/user-container');
       } else {
         history.push('/employer-signup');
       }
@@ -53,7 +53,7 @@ const EmployerSignup = ({
   };
 
   return (
-    <form>
+    <div>
       <p>Employer Signup</p>
         <label htmlFor='name'>Name: </label>
         <input
@@ -130,7 +130,7 @@ const EmployerSignup = ({
         <button onClick={registerEmployer}>
           Signup
         </button>
-    </form>
+    </div>
   );
 };
 

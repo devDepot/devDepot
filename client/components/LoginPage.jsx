@@ -11,11 +11,25 @@ const LoginPage = ({
   set_username,
   password,
   set_password,
+  name,
+  set_name,
+  stack,
+  set_stack,
+  hourly_rate,
+  set_hourly_rate,
+  email,
+  set_email,
+  company,
+  set_company,
+  about,
+  set_about,
   history,
 }) => {
   const requestHeaders = {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({
       username: username,
       password: password,
@@ -23,15 +37,28 @@ const LoginPage = ({
   };
 
   const directUser = () => {
-    fetch('/auth', requestHeaders)
-      .then((res) => res.json())
+    fetch('http://localhost:3000/login', requestHeaders)
+      .then((res) => {
+        return res.json()})
       .then((data) => {
+        console.log('data: ', data);
         if (data.user_type === 'Developer') {
           localStorage.setItem('devdepot_sid', data.token);
+          set_login(true);
+          set_user(true);
+          set_name(data.user_info.name);
+          set_stack(data.user_info.stack);
+          set_hourly_rate(data.user_info.hourly_rate);
+          set_about(data.user_info.about);
           history.push('/dev-aboutme');
         } else {
           localStorage.setItem('devdepot_sid', data.token);
-          history.push('/homepage');
+          set_login(true);
+          set_name(data.user_info.name);
+          set_email(data.user_info.email);
+          set_company(data.user_info.company);
+          set_about(data.user_info.about);
+          history.push('/user-container');
         }
         if (!data.user_type) history.push('/');
       });

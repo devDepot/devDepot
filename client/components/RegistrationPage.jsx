@@ -15,10 +15,10 @@ const RegistrationPage = ({
 
   useEffect(() => {
     const token = localStorage.getItem('devdepot_sid');
-    fetch('/auth', {
+    fetch('http://localhost:3000/auth', {
       headers: {
         'Content-Type': 'application/json',
-        token: JSON.stringify({ token }),
+        token: token,
       },
     })
       .then((res) => res.json())
@@ -34,7 +34,7 @@ const RegistrationPage = ({
     return <Redirect to="/dev-aboutme" />;
   }
   if (is_logged_in && !is_dev_user) {
-    return <Redirect to="/homepage" />;
+    return <Redirect to="/user-container" />;
   }
 
   return (
