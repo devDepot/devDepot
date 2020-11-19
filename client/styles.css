@@ -19,6 +19,27 @@
   font-family: 'Space Mono', monospace;
 }
 
-.registration-button {
+.registration-button,
+.signup-submit-button
+{
   font-family: 'Xanh Mono', monospace;
+}
+
+.dev-signup-text {
+  font-family: 'Space Mono', monospace;
+  font-size: 40px;
+}
+
+.dev-signup-label {
+  font-family: 'Source Code Pro', monospace;
+}
+
+.splitback{
+  /* background-color: #2fcf21; */
+  background-image: -webkit-linear-gradient(30deg, #a8ffb0 50%, #b6ffea 50%);
+}
+
+.dev-signup-img {
+  width: 350px;
+  height: 350px;
 }

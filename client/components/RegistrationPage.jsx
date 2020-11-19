@@ -68,17 +68,17 @@ const RegistrationPage = ({
       <h1 className="registration-logo text-center">DevDepot</h1>
       <div className="registration-box w-2/6 border-double border-2 border-indigo-800 m-0 m-auto rounded-lg bg-white shadow-2xl">
         <form className="flex flex-col justify-center items-center py-4 px-4 rounded pt-60">
-          <h1 className="text-2xl registration-box-text">You are</h1>
+          <h1 className="text-2xl registration-box-text">You are:</h1>
           <div className="space-x-3">
             <br />
             <button
-              className=" registration-button bg-gradient-to-r from-teal-400 to-blue-500 hover:from-pink-500 hover:to-orange-500 text-white font-bold py-2 px-4 rounded text-lg shadow-md"
+              className="registration-button bg-gradient-to-r from-teal-400 to-blue-500 hover:from-orange-500 hover:to-pink-500 text-white font-bold py-2 px-4 rounded text-lg shadow-md"
               onClick={() => history.push('/dev-signup')}
             >
               A Developer
             </button>
             <button
-              className="registration-button bg-gradient-to-r from-teal-400 to-blue-500 hover:from-pink-500 hover:to-orange-500 text-white font-bold py-2 px-4 rounded text-lg shadow-md"
+              className="registration-button bg-gradient-to-r from-blue-400 to-teal-500 hover:from-pink-500 hover:to-orange-500 text-white font-bold py-2 px-4 rounded text-lg shadow-md"
               onClick={() => history.push('/employer-signup')}
             >
               An Employer
@@ -88,7 +88,7 @@ const RegistrationPage = ({
           <span className="registration-box-text">
             Already have an account? Login
             <Link to="/login">
-              <b className="text-blue-600 animate-pulse"> here</b>
+              <b className="text-purple-700 animate-pulse"> here</b>
             </Link>
           </span>
         </form>
