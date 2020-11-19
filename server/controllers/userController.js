@@ -29,7 +29,7 @@ userController.createUser = async (req, res, next) => {
     const params = [username, hash, email, is_dev];
     db.query(
       `INSERT INTO accounts (username, password, email, is_dev) 
-          VALUES ($1, $2, $3, 4);`,
+          VALUES ($1, $2, $3, $4);`,
       params,
       (err, rows) => {
         if (err) return next(err);
