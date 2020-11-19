@@ -4,6 +4,21 @@
 
 @tailwind utilities;
 
-.test {
-  margin: 0 auto
+.registration-box {
+  margin-top: 10rem;
+}
+
+.registration-logo {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 150px;
+}
+
+.registration-box-text {
+  font-family: 'Space Mono', monospace;
+}
+
+.registration-button {
+  font-family: 'Xanh Mono', monospace;
 }
