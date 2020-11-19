@@ -10,6 +10,7 @@ const UserContainer = ({
   name,
   stack,
   email,
+  employer_email,
   hourly_rate,
   about,
   devs,
@@ -18,12 +19,18 @@ const UserContainer = ({
   set_cart,
   history,
   image,
+  filter_options,
+  set_filter_options,
 }) => {
   if (is_dev_user === true) {
     return (
       <div>
         <nav>
-          <NavBar in_cart={in_cart} username={username} />
+          <NavBar
+            in_cart={in_cart}
+            employer_email={employer_email}
+            email={email}
+          />
         </nav>
         <div>
           <DeveloperAboutMe
@@ -39,10 +46,15 @@ const UserContainer = ({
     );
   }
   if (is_dev_user === false) {
+    console.log('USER CONTAINER', employer_email);
     return (
       <div>
         <nav>
-          <NavBar in_cart={in_cart} history={history} />
+          <NavBar
+            in_cart={in_cart}
+            employer_email={employer_email}
+            history={history}
+          />
         </nav>
         <div>
           <Homepage
@@ -54,6 +66,9 @@ const UserContainer = ({
             set_cart={set_cart}
             devs={devs}
             set_devs={set_devs}
+            employer_email={employer_email}
+            filter_options={filter_options}
+            set_filter_options={set_filter_options}
           />
         </div>
       </div>

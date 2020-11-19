@@ -63,7 +63,7 @@ const LoginPage = ({
           set_company(data.user_info.company);
           set_about(data.user_info.about);
           set_email(data.user_info.email);
-          console.log('emp email', employer_email);
+
           history.push('/user-container');
         }
         if (!data.user_type) history.push('/');

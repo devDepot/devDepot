@@ -81,20 +81,21 @@ userController.checkout = (req, res, next) => {
     [req.body.employer_email],
     (err, result) => {
       if (err) return next(err);
-      console.log('RESUOoOlllttttt', result);
-      // const { name, about } = result.rows[0];
-      // req.headers.hired_devs.forEach((dev) => {
-      //   const mailOptions = {
-      //     from: 'devDepot21@gmail.com',
-      //     to: dev.email,
-      //     subject: 'DevDepot- ya hired',
-      //     text: `YA HIRED: ${name} wants to hire you for their project! Here's a little bit about your future employer: ${about}.
-      //     you can email them at: ${req.body.employer_email}`,
-      //   };
-      //   transport.sendMail(mailOptions, (err, info) => {
-      //     if (err) return next(err);
-      //   });
-      // });
+      console.log('RESUOoOlllttttt', result.rows[0]);
+
+      req.body.hired_devs.forEach((dev) => {
+        console.log('dev dot email', dev.email);
+        const mailOptions = {
+          from: 'devDepot21@gmail.com',
+          to: dev.email,
+          subject: 'DevDepot- ya hired',
+          text: `YA HIRED: ${result.rows[0].name} wants to hire you for their project! Here's a little bit about your future employer: ${result.rows[0].about}.
+          you can email them at: ${req.body.employer_email}`,
+        };
+        transport.sendMail(mailOptions, (err, info) => {
+          if (err) return next(err);
+        });
+      });
 
       next();
     }
