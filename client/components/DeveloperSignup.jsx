@@ -21,6 +21,8 @@ const DeveloperSignup = ({
   set_hourly_rate,
   about,
   set_about,
+  image,
+  set_image,
   history,
 }) => {
   const requestHeaders = {
@@ -36,10 +38,12 @@ const DeveloperSignup = ({
       about,
       active: true,
       user_type: 'Developer',
+      image,
     }),
   };
 
   const registerDev = () => {
+    console.log('IMAGE registerDev', image)
     fetch('http://localhost:3000/user', requestHeaders).then((res) => {
       if (res.status === 200) {
         set_login(true);
@@ -174,6 +178,19 @@ const DeveloperSignup = ({
                 set_about(e.target.value);
               }}
               value={about}
+            />
+          </div>
+          <div>
+            <label htmlFor='addProfilePic'>Add a Profile Picture: </label>
+            <input
+              type="text"
+              name="profile-pic"
+              placeholder="Add Image URL"
+              id="profile-pic"
+              onChange={(e) => {
+                set_image(e.target.value);
+              }}
+              value={image}
             />
           </div>
           <div className="w-1/3 text-center">

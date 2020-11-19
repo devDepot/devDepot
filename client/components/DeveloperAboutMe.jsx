@@ -41,16 +41,6 @@ const DeveloperAboutMe = ({
         About: {about}
       </span>
       {/* <div>
-        <label htmlFor='addProfilePic'>Add a Profile Picture: </label>
-        <input
-          id='addProfilePic'
-          value=
-          onChange=
-          type='text'
-        />
-        <button onClick=>Add Picture</button>
-      </div> */}
-      {/* <div>
         Skills:  
         <label htmlFor='SQL'> SQL</label>
         <input
