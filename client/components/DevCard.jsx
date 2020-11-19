@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import AddToCartButton from './AddToCartButton';
 
-const DevCard = ({name, stack, hourly_rate,in_cart, set_cart }) => {
+const DevCard = ({name, stack, hourly_rate, image, in_cart, set_cart }) => {
   const [dev_selected, set_dev_selected] = useState(false);
 
   return (
   <div>
-    <img src="#" alt="dev-pic" />
+    <img src={image} alt="dev-pic" />
     <h4>
       <b>{name}</b>
     </h4>

@@ -25,6 +25,7 @@ const App = () => {
   const [about, set_about] = useState('');
   const [company, set_company] = useState('');
   const [hourly_rate, set_hourly_rate] = useState(0);
+  const [image, set_image] = useState('');
 
   return (
     <div>
@@ -84,6 +85,8 @@ const App = () => {
               set_name={set_name}
               email={email}
               set_email={set_email}
+              image={image}
+              set_image={set_image}
             />
           </Route>
           <Route exact path="/employer-signup" component={EmployerSignup}>
@@ -125,6 +128,7 @@ const App = () => {
               set_devs={set_devs}
               in_cart={in_cart}
               set_cart={set_cart}
+              image={image}
             />
           </Route>
           <Route exact path="/homepage" component={Homepage}>
