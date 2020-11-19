@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
+import dev from '../public/dev.png';
 
-const DeveloperSignup = ({ 
+const DeveloperSignup = ({
   is_logged_in,
   set_login,
   is_dev_user,
@@ -20,20 +21,19 @@ const DeveloperSignup = ({
   set_hourly_rate,
   about,
   set_about,
-  history
+  history,
 }) => {
-
   const requestHeaders = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      name: name,
-      email: email,
-      username: username,
-      password: password,
-      stack: stack,
-      hourly_rate: hourly_rate,
-      about: about,
+      name,
+      email,
+      username,
+      password,
+      stack,
+      hourly_rate,
+      about,
       active: true,
       user_type: 'Developer',
     }),
@@ -50,101 +50,143 @@ const DeveloperSignup = ({
       }
     });
   };
-  
+
   return (
-    <div>
-      <p>Developer Signup</p>
-        <label htmlFor='name'>Name: </label>
-        <input
-          type='text'
-          name='name'
-          placeholder='Name'
-          id='name'
-          onChange={(e) => {
-            set_name(e.target.value)
-          }}
-          value={name}
-        >
-        </input>
-        <label htmlFor='email'>Email: </label>
-        <input
-          type='text'
-          name='email'
-          placeholder='Email'
-          id='email'
-          onChange={(e) => {
-            set_email(e.target.value)
-          }}
-          value={email}
-        >
-        </input>
-        <label htmlFor='username'>Username: </label>
-        <input
-          type='text'
-          name='username'
-          placeholder='Username'
-          id='username'
-          onChange={(e) => {
-            set_username(e.target.value)
-          }}
-          value={username}
-        >
-        </input>
-        <label htmlFor='password'>Password: </label>
-        <input
-          type='text'
-          name='password'
-          placeholder='Password'
-          id='password'
-          onChange={(e) => {
-            set_password(e.target.value)
-          }}
-          value={password}
-        >
-        </input>
-        <label htmlFor='stack'>Tech Stack: </label>
-        <select
-          name="stack"
-          id="stack"
-          onChange={(e) => {
-            set_stack(e.target.value)
-          }}
-          value={stack}
-        >
-          <option value=""></option>
-          <option value="frontend">Frontend</option>
-          <option value="backend">Backend</option>
-          <option value="fullstack">Fullstack</option>
-        </select>
-        <label htmlFor='hourly_rate'>Hourly Rate: </label>
-        <input
-          type='text'
-          name='hourlyRate'
-          placeholder='Hourly Rate'
-          id='hourlyRate'
-          onChange={(e) => {
-            set_hourly_rate(e.target.value)
-          }}
-          value={hourly_rate}
-        >
-        </input>
-        <label htmlFor='aboutme'>Tell Us About Yourself: </label>
-        <textarea
-          type='text'
-          name='aboutme'
-          placeholder='Tell Us About Yourself...'
-          id='aboutme'
-          onChange={(e) => {
-            set_about(e.target.value)
-          }}
-          value={about}
-        >
-        </textarea>
-        <button onClick={registerDev}>
-          Signup
-        </button>
+    <div className="dev-splitback h-screen overflow-hidden">
+      <div className="w-2/3 m-0 m-auto mt-2 w-8/12">
+        <h1 className="dev-signup-text text-center">Developer Sign Up</h1>
+        <div className="relative clear-right float-right mt-40">
+          <img src={dev} alt="dev signup carrots" className="dev-signup-img" />
+        </div>
+        <div className="dev-signup-form ml-2 mt-10">
+          <div className="w-1/3">
+            <label className="dev-signup-label" htmlFor="name"> Your name: </label>
+            <div>
+              <input
+                className="border-solid border-2 border-indigo-800 rounded-lg outline-none w-full shadow-md"
+                type="text"
+                name="name"
+                placeholder=" Richard Henderson"
+                id="name"
+                onChange={(e) => {
+                  set_name(e.target.value);
+                }}
+                value={name}
+              />
+            </div>
+          </div>
+          <br />
+          <div className="w-1/3">
+            <label className="dev-signup-label" htmlFor="email"> Your e-mail: </label>
+            <div>
+              <input
+                className="border-solid border-2 border-indigo-800 rounded-lg outline-none w-full shadow-md"
+                type="text"
+                name="email"
+                placeholder=" rhenderson@gmail.com"
+                id="email"
+                onChange={(e) => {
+                  set_email(e.target.value);
+                }}
+                value={email}
+              />
+            </div>
+          </div>
+          <br />
+          <div className="w-1/3">
+            <label className="dev-signup-label" htmlFor="username"> Your username: </label>
+            <div>
+              <input
+                className="border-solid border-2 border-indigo-800 rounded-lg outline-none w-full shadow-md"
+                type="text"
+                name="username"
+                placeholder=" PiedPiper007"
+                id="username"
+                onChange={(e) => {
+                  set_username(e.target.value);
+                }}
+                value={username}
+              />
+            </div>
+          </div>
+          <br />
+          <div className="w-1/3">
+            <label className="dev-signup-label" htmlFor="password"> Your password: </label>
+            <div>
+              <input
+                className="border-solid border-2 border-indigo-800 rounded-lg outline-none w-full shadow-md"
+                type="text"
+                name="password"
+                placeholder=" emacsovervim"
+                id="password"
+                onChange={(e) => {
+                  set_password(e.target.value);
+                }}
+                value={password}
+              />
+            </div>
+          </div>
+          <br />
+          <div className="w-1/3">
+            <label className="dev-signup-label" htmlFor="stack">Tech Stack: </label>
+            <select
+              className="border-solid border-2 border-indigo-800 rounded-lg outline-none w-full shadow-md"
+              name="stack"
+              id="stack"
+              onChange={(e) => {
+                set_stack(e.target.value);
+              }}
+              value={stack}
+            >
+              <option value="" />
+              <option value="frontend">Frontend</option>
+              <option value="backend">Backend</option>
+              <option value="fullstack">Fullstack</option>
+            </select>
+          </div>
+          <br />
+          <div className="w-1/3">
+            <label className="dev-signup-label" htmlFor="hourly_rate">Hourly Rate: </label>
+            <div>
+              <input
+                className="border-solid border-2 border-indigo-800 rounded-lg outline-none w-full shadow-md"
+                type="text"
+                name="hourlyRate"
+                placeholder=" Hourly Rate"
+                id="hourlyRate"
+                onChange={(e) => {
+                  set_hourly_rate(e.target.value);
+                }}
+                value={hourly_rate}
+              />
+            </div>
+          </div>
+          <br />
+          <br />
+          <div className="w-1/3">
+            <textarea
+              className="border-solid border-2 border-indigo-800 rounded-lg outline-none w-full shadow-md"
+              type="text"
+              name="aboutme"
+              placeholder=" Tell Us About Yourself..."
+              id="aboutme"
+              onChange={(e) => {
+                set_about(e.target.value);
+              }}
+              value={about}
+            />
+          </div>
+          <div className="text-center">
+            <button 
+              className="signup-submit-button bg-pink-100 text-black font-bold py-2 px-4 rounded text-lg shadow-md mt-16 mb-4 animate-bounce motion-reduce"
+              onClick={registerDev}>
+                Sign Up
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-  ) 
-}
+  );
+};
 
 export default withRouter(DeveloperSignup);
