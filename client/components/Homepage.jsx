@@ -13,6 +13,8 @@ const Homepage = ({
   in_cart,
   set_cart,
   devs,
+  employer_email,
+  email,
   set_devs,
 }) => {
   return (
@@ -30,6 +32,7 @@ const Homepage = ({
           set_devs={set_devs}
           name={name}
           hourly_rate={hourly_rate}
+          email={email}
         />
       </div>
     </div>

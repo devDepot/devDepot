@@ -22,6 +22,7 @@ const App = () => {
   const [stack, set_stack] = useState('');
   const [name, set_name] = useState('');
   const [email, set_email] = useState('');
+  const [employer_email, set_employer_email] = useState('');
   const [about, set_about] = useState('');
   const [company, set_company] = useState('');
   const [hourly_rate, set_hourly_rate] = useState(0);
@@ -59,6 +60,8 @@ const App = () => {
               set_hourly_rate={set_hourly_rate}
               email={email}
               set_email={set_email}
+              employer_email={employer_email}
+              set_employer_email={set_employer_email}
               company={company}
               set_company={set_company}
               about={about}
@@ -103,6 +106,8 @@ const App = () => {
               set_name={set_name}
               email={email}
               set_email={set_email}
+              employer_email={employer_email}
+              set_employer_email={set_employer_email}
               company={company}
               set_company={set_company}
               about={about}
@@ -129,6 +134,10 @@ const App = () => {
               in_cart={in_cart}
               set_cart={set_cart}
               image={image}
+              employer_email={employer_email}
+              set_employer_email={set_employer_email}
+              filter_options={filter_options}
+              set_filter_options={set_filter_options}
             />
           </Route>
           <Route exact path="/homepage" component={Homepage}>
@@ -137,6 +146,7 @@ const App = () => {
               in_cart={in_cart}
               filter_options={filter_options}
               name={name}
+              employer_email={employer_email}
             />
           </Route>
           <Route exact path="/dev-aboutme" component={DeveloperAboutMe}>
@@ -154,10 +164,10 @@ const App = () => {
             <EmployerAboutMe
               username={username}
               password={password}
-              email={email}
               name={name}
               company={company}
               about={about}
+              employer_email={employer_email}
             />
           </Route>
         </Switch>
