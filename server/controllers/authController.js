@@ -10,24 +10,20 @@ const secret = process.env.SECRET;
 
 authController.setToken = (req, res, next) => {
   //expiresIn is currently set to 60 seconds for testing
-  const { username, userType } = req.body;
-  const token = jwt.sign({ username, userType }, secret, {
+  const { username } = req.body;
+  if (req.body.user_type) res.locals.user_type = req.body.user_type;
+
+  const {user_type} = res.locals;
+  const token = jwt.sign({ username, user_type }, secret, {
     expiresIn: 60,
   });
-
   res.locals.token = token;
 
   return next();
 };
 
 authController.isLoggedIn = (req, res, next) => {
-  //check if devdepot_session exists - if not the return false(not logged in)
-  //to frontend
-  //if exists, verify
-
-  //TODO: frontend wants to be sent username, isDevUser, is_logged_in
-  const token = req.cookies; //TODO: what does req.cookies look like
-  console.log('req.cookies', req.cookies);
+  const { token } = req.headers.token;
 
   jwt.verify(token, secret, (err, decoded) => {
     if (err) {
@@ -35,32 +31,34 @@ authController.isLoggedIn = (req, res, next) => {
       return next();
     } else {
       res.locals.is_logged_in = true;
-      //query db with decoded user id and get user info to send to front end
-      //   db.query('SELECT ;')
+      res.locals.username = decoded.username;
+      res.locals.is_dev_user = decoded.user_type === 'Developer' ? true : false;
       console.log('this is decoded', decoded);
       return next();
     }
   });
 };
 
-authController.logIn = (req, res, next) => {
-  //select password where username is inputted username
-  //use bcrypt.compare against result
-  //bcrypt.compare(my plaintext password)
+authController.logIn = async (req, res, next) => {
   console.log('req.body', req.body);
   const { username, password } = req.body;
   const params = [username];
 
   db.query(
-    'SELECT password FROM accounts WHERE username = $1',
+    `SELECT password, is_dev FROM accounts WHERE username = $1;`,
     params,
     (err, result) => {
       if (err) return next(err);
       const hash = result.rows[0].password;
+      const is_dev = result.rows[0].is_dev;
       bcrypt.compare(password, hash, (err, result) => {
         if (err) return next(err);
-        if (result) {
-          console.log('hello');
+        if (result && is_dev) {
+          res.locals.user_type = 'Developer';
+          return next();
+        } else {
+          res.locals.user_type = 'Employer';
+          return next();
         }
       });
     }

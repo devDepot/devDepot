@@ -23,6 +23,7 @@ const userController = {};
 
 userController.createUser = async (req, res, next) => {
   const { name, username, password, email, user_type } = req.body;
+  console.log('userType: ', user_type);
   const is_dev = user_type === 'Developer' ? true : false;
 
   await bcrypt.hash(password, saltRounds, async (err, hash) => {

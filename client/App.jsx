@@ -41,7 +41,9 @@ const App = () => {
           <Route exact path="/dev-signup" component={DeveloperSignup}>
             <DeveloperSignup
               is_logged_in={is_logged_in}
+              set_login={set_login}
               is_dev_user={is_dev_user}
+              set_user={set_user}
               username={username}
               set_username={set_username}
               password={password}
@@ -61,9 +63,9 @@ const App = () => {
           <Route exact path="/employer-signup" component={EmployerSignup}>
             <EmployerSignup
               is_logged_in={is_logged_in}
-              set_is_logged_in={set_login}
+              set_login={set_login}
               is_dev_user={is_dev_user}
-              set_is_dev_user={set_user}
+              set_user={set_user}
               username={username}
               set_username={set_username}
               password={password}
@@ -79,7 +81,10 @@ const App = () => {
             />
           </Route>
           <Route exact path="/user-container" component={UserContainer}>
-            <UserContainer is_dev_user={is_dev_user} />
+            <UserContainer
+              is_dev_user={is_dev_user}
+              username={username}
+            />
           </Route>
           <Route exact path="/homepage" component={Homepage}>
             <Homepage
@@ -87,7 +92,7 @@ const App = () => {
               in_cart={in_cart}
               dev_selected={dev_selected}
               filter_options={filter_options}
-              username={username}
+              name={name}
             />
           </Route>
           <Route exact path="/dev-aboutme" component={DeveloperAboutMe}>

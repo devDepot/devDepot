@@ -18,13 +18,13 @@ app.use(express.static(path.resolve(__dirname, '../client/')));
 app.use(express.static(path.resolve(__dirname, '../client/public/')));
 
 //endpoint to check sessions in database, returns true or false
-app.get('/auth', authController.setToken, (req, res) => {
+app.get('/auth', authController.isLoggedIn, (req, res) => {
   res.status(200).json(res.locals);
 });
 
 //endpoint to create a new session
 app.get('/login', authController.logIn, authController.setToken, (req, res) => {
-  res.sendStatus(200);
+  res.status(200).json(res.locals);
 });
 
 // //endpoint to insert a new user in the database
