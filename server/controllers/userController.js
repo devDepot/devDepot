@@ -38,7 +38,7 @@ userController.createUser = async (req, res, next) => {
   });
   if (is_dev) {
     const { stack, about, hourly_rate } = req.body;
-    const params = [stack, about, hourly_rate, true, username];
+    const params = [name, stack, about, hourly_rate, true, username];
     db.query(
       `INSERT INTO developers 
     (name, 
@@ -57,7 +57,7 @@ userController.createUser = async (req, res, next) => {
     );
   } else if (req.body.company) {
     const { about, company } = req.body;
-    const params = [about, company, username];
+    const params = [name, about, company, username];
     db.query(
       `INSERT INTO employers 
     (name, 
@@ -74,7 +74,7 @@ userController.createUser = async (req, res, next) => {
     );
   } else {
     const { about } = req.body;
-    const params = [about, username];
+    const params = [name, about, username];
     db.query(
       `INSERT INTO employers 
     (name, 
