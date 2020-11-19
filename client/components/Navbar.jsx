@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import history from 'history'
 import CartModal from './CartModal';
 
-const Navbar = ({ in_cart }) => {
+const Navbar = ({ in_cart, history }) => {
   return (
     <div className="mx-auto bg-indigo-300 p-5">
       <div className="flex justify-between">
@@ -11,11 +12,11 @@ const Navbar = ({ in_cart }) => {
         </div>
         <ul className="flex flex-row">
           <li className="pr-5">
-            <CartModal />
+            <CartModal in_cart={in_cart} />
           </li>
           <li className="pr-5 navbar-user">
-            <button className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1">
-              <Link to="/employer-aboutme" in_cart={in_cart}>User</Link>
+            <button className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1" >
+              User
             </button>
           </li>
         </ul>
@@ -24,4 +25,4 @@ const Navbar = ({ in_cart }) => {
   );
 };
 
-export default Navbar;
+export default withRouter(Navbar);
