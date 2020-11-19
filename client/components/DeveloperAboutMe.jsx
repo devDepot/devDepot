@@ -20,43 +20,35 @@ const DeveloperAboutMe = ({
   set_hourly_rate,
   about,
   set_about,
-  history
+  history,
 }) => {
   return (
-    <div>
-      <h2>Developer Profile</h2>
-      <span>
-        Name: {name}
-      </span>
-      <span>
-        Email: {email}
-      </span>
-      <span>
-        Tech Stack: {stack}
-      </span>
-      <span>
-        Hourly Rate: {hourly_rate}
-      </span>
-      <span>
-        About: {about}
-      </span>
-      {/* <div>
-        Skills:  
-        <label htmlFor='SQL'> SQL</label>
-        <input
-          type='checkbox'
-          name='SQL'
-          id='SQL'>
-        </input>
-        <label htmlFor='noSQL'>noSQL</label>
-        <input
-          type='checkbox'
-          name='noSQL'
-          id='noSQL'>
-        </input>
-      </div> */}
+    <div className="bg-gradient-to-b from-green-400 h-screen overflow-hidden">
+      <h2 className="text-center employer-profile-text mt-4">Developer Profile</h2>
+      <div className="border-solid border-2 border-indigo-500 m-0 m-auto w-3/12 about-me-container rounded-lg shadow-xl mt-10">
+        <div>
+          Name:
+          {name}
+        </div>
+        <div>
+          Email:
+          {email}
+        </div>
+        <div>
+          Tech Stack:
+          {stack}
+        </div>
+        <div>
+          Hourly Rate:
+          {hourly_rate}
+        </div>
+        <div>
+          About:
+          {about}
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default withRouter(DeveloperAboutMe);

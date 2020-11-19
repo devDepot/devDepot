@@ -28,7 +28,8 @@
 .dev-signup-text,
 .employer-signup-text,
 .sign-in-text,
-.card-text
+.card-text,
+.employer-profile-text
 {
   font-family: 'Space Mono', monospace;
   font-size: 40px;
@@ -87,7 +88,7 @@
   margin-top: 25px;
 }
 
-.dev-name-text
+.dev-name-text,
 {
   font-family: 'Source Code Pro', monospace;
   font-size: xx-large;
@@ -97,4 +98,9 @@
 .dev-text {
   font-family: 'Source Code Pro', monospace;
   font-size: large;
+}
+
+.about-me-container {
+  font-family: 'Source Code Pro', monospace;
+  background-color: #b9fffc;
 }

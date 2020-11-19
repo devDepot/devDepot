@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
+import Navbar from './Navbar';
 
 const EmployerAboutMe = ({
   is_logged_in,
@@ -22,50 +23,32 @@ const EmployerAboutMe = ({
   set_about,
   company,
   set_company,
-  history
+  history,
 }) => {
   return (
-    <div>
-      <h2>Employer Profile</h2>
-      <span>
-        Name: {name}
-      </span>
-      <span>
-        Email: {email}
-      </span>
-      <span>
-        Company: {company}
-      </span>
-      <span>
-        About: {about}
-      </span>
-      {/* <div>
-        <label htmlFor='addProfilePic'>Add a Profile Picture: </label>
-        <input
-          id='addProfilePic'
-          value=
-          onChange=
-          type='text'
-        />
-        <button onClick=>Add Picture</button>
-      </div> */}
-      {/* <div>
-        Skills:  
-        <label htmlFor='SQL'> SQL</label>
-        <input
-          type='checkbox'
-          name='SQL'
-          id='SQL'>
-        </input>
-        <label htmlFor='noSQL'>noSQL</label>
-        <input
-          type='checkbox'
-          name='noSQL'
-          id='noSQL'>
-        </input>
-      </div> */}
+    <div className="bg-gradient-to-b from-pink-600 h-screen overflow-hidden">
+      <Navbar />
+      <h2 className="text-center employer-profile-text mt-4">Employer Profile</h2>
+      <div className="border-solid border-2 border-indigo-500 m-0 m-auto w-3/12 about-me-container rounded-lg shadow-xl mt-10">
+        <div>
+          Name:
+          {name}
+        </div>
+        <div>
+          Email:
+          {email}
+        </div>
+        <div>
+          Company:
+          {company}
+        </div>
+        <div>
+          About:
+          {about}
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default withRouter(EmployerAboutMe);
