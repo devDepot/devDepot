@@ -136,6 +136,8 @@ const App = () => {
               image={image}
               employer_email={employer_email}
               set_employer_email={set_employer_email}
+              filter_options={filter_options}
+              set_filter_options={set_filter_options}
             />
           </Route>
           <Route exact path="/homepage" component={Homepage}>
