@@ -22,22 +22,23 @@ const userController = {};
 // }
 
 userController.createUser = async (req, res, next) => {
-  const { username, password, email, userType } = req.body;
+  const { name, username, password, email, user_type } = req.body;
+  const is_dev = user_type === 'Developer' ? true : false;
 
   await bcrypt.hash(password, saltRounds, async (err, hash) => {
-    const params = [username, hash, email];
+    const params = [username, hash, email, is_dev];
     db.query(
-      `INSERT INTO accounts (username, password, email) 
-          VALUES ($1, $2, $3);`,
+      `INSERT INTO accounts (username, password, email, is_dev) 
+          VALUES ($1, $2, $3, 4);`,
       params,
       (err, rows) => {
         if (err) return next(err);
       }
     );
   });
-  if (userType === 'Developer') {
-    const { name, stack, about, hourly_rate } = req.body;
-    const params = [name, stack, about, hourly_rate, true, username];
+  if (is_dev) {
+    const { stack, about, hourly_rate } = req.body;
+    const params = [stack, about, hourly_rate, true, username];
     db.query(
       `INSERT INTO developers 
     (name, 
@@ -55,8 +56,8 @@ userController.createUser = async (req, res, next) => {
       }
     );
   } else if (req.body.company) {
-    const { name, about, company } = req.body;
-    const params = [name, about, company, username];
+    const { about, company } = req.body;
+    const params = [about, company, username];
     db.query(
       `INSERT INTO employers 
     (name, 
@@ -72,8 +73,8 @@ userController.createUser = async (req, res, next) => {
       }
     );
   } else {
-    const { name, about } = req.body;
-    const params = [name, about, username];
+    const { about } = req.body;
+    const params = [about, username];
     db.query(
       `INSERT INTO employers 
     (name, 
@@ -88,12 +89,6 @@ userController.createUser = async (req, res, next) => {
       }
     );
   }
-
-  console.log('req body', req.body);
 };
-
-
-
-
 
 module.exports = userController;
