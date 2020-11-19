@@ -58,7 +58,7 @@ const DevCardContainer = ({
       );
     });
   };
-  return <div>{renderDevs()}</div>;
+  return <div className="grid grid-cols-3 gap-2">{renderDevs()}</div>;
 };
 
 export default DevCardContainer;

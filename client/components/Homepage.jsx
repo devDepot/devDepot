@@ -21,8 +21,8 @@ const Homepage = ({
 }) => {
 
   return (
-    <div>
-      <h1>
+    <div className="bg-gradient-to-t from-purple-600 h-screen overflow-hidden">
+      <h1 className="text-center card-text mt-10 mb-4">
         Hello,
         {username}
       </h1>
