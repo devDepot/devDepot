@@ -24,7 +24,7 @@ app.get('/auth', authController.isLoggedIn, (req, res) => {
 
 //endpoint to create a new session
 app.get('/login', authController.logIn, authController.setToken, (req, res) => {
-  res.sendStatus(200);
+  res.status(200).json(res.locals);
 });
 
 // //endpoint to insert a new user in the database

@@ -2,7 +2,17 @@ import React, { useState } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import history from 'history';
 
-const LoginPage = ({ is_logged_in, set_login, is_dev_user, set_user, username, set_username, password, set_password, history }) => {
+const LoginPage = ({
+  is_logged_in,
+  set_login,
+  is_dev_user,
+  set_user,
+  username,
+  set_username,
+  password,
+  set_password,
+  history,
+}) => {
   const requestHeaders = {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
@@ -14,43 +24,45 @@ const LoginPage = ({ is_logged_in, set_login, is_dev_user, set_user, username, s
 
   const directUser = () => {
     fetch('/auth', requestHeaders)
-      .then(res => res.json())
-      .then(data => {
-        if (data.userType === developer ? history.push('/dev-aboutme') : history.push('/homepage'));
-        if (!data.userType) history.push('/');
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.user_type === 'Developer') {
+          localStorage.setItem('devdepot_sid', data.token);
+          history.push('/dev-aboutme');
+        } else {
+          localStorage.setItem('devdepot_sid', data.token);
+          history.push('/homepage');
+        }
+        if (!data.user_type) history.push('/');
       });
   };
 
   return (
     <div>
       <p>DevDepot Sign In</p>
-        <label htmlFor='username'>Username: </label>
-        <input
-          type='text'
-          name='username'
-          placeholder='Username'
-          id='username'
-          onChange={(e) => {
-            set_username(e.target.value)
-          }}
-          value={username}
-          >
-        </input>
-        <label htmlFor='password'>Password: </label>
-        <input
-          type='text'
-          name='password'
-          placeholder='Password'
-          id='password'
-          onChange={(e) => {
-            set_password(e.target.value)
-          }}
-          value={password}
-          >
-        </input>
-        <button onClick={directUser}>
-          Login
-        </button>
+      <label htmlFor="username">Username: </label>
+      <input
+        type="text"
+        name="username"
+        placeholder="Username"
+        id="username"
+        onChange={(e) => {
+          set_username(e.target.value);
+        }}
+        value={username}
+      ></input>
+      <label htmlFor="password">Password: </label>
+      <input
+        type="text"
+        name="password"
+        placeholder="Password"
+        id="password"
+        onChange={(e) => {
+          set_password(e.target.value);
+        }}
+        value={password}
+      ></input>
+      <button onClick={directUser}>Login</button>
     </div>
   );
 };
