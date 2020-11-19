@@ -35,7 +35,7 @@ const DeveloperSignup = ({
       hourly_rate: hourly_rate,
       about: about,
       active: true,
-      userType: 'Developer',
+      user_type: 'Developer',
     }),
   };
 
@@ -44,7 +44,7 @@ const DeveloperSignup = ({
       if (res.status === 200) {
         set_login(true);
         set_user(true);
-        history.push('/homepage');
+        history.push('/user-container');
       } else {
         history.push('/employer-signup');
       }

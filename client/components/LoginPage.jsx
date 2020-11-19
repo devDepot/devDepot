@@ -16,8 +16,12 @@ const LoginPage = ({ is_logged_in, set_login, is_dev_user, set_user, username, s
     fetch('/auth', requestHeaders)
       .then(res => res.json())
       .then(data => {
-        if (data.userType === developer ? history.push('/dev-aboutme') : history.push('/homepage'));
-        if (!data.userType) history.push('/');
+        if (data.user_type === 'Developer') {
+          history.push('/dev-aboutme')
+        } else {
+          history.push('/homepage');
+        }
+        if (!data.user_type) history.push('/');
       });
   };
 

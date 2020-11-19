@@ -37,12 +37,13 @@ const EmployerSignup = ({
       stack: stack,
       hourly_rate: hourly_rate,
       about: about,
-      userType: 'Employer',
+      user_type: 'Employer',
     }),
   };
 
   const registerEmployer = () => {
     fetch('/user', requestHeaders).then((res) => {
+      console.log('res: ', res);
       if (res.status === 200) {
         set_login(true);
         history.push('/homepage');
