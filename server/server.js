@@ -18,7 +18,7 @@ app.use(express.static(path.resolve(__dirname, '../client/')));
 app.use(express.static(path.resolve(__dirname, '../client/public/')));
 
 //endpoint to check sessions in database, returns true or false
-app.get('/auth', authController.setToken, (req, res) => {
+app.get('/auth', authController.isLoggedIn, (req, res) => {
   res.status(200).json(res.locals);
 });
 
