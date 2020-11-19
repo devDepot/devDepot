@@ -26,14 +26,16 @@
 }
 
 .dev-signup-text,
-.employer-signup-text
+.employer-signup-text,
+.sign-in-text
 {
   font-family: 'Space Mono', monospace;
   font-size: 40px;
 }
 
 .dev-signup-label,
-.employer-signup-label
+.employer-signup-label,
+.signin-label
 {
   font-family: 'Source Code Pro', monospace;
 }
@@ -66,4 +68,13 @@
 .navbar-logo,
 .navbar-user {
   align-self: center;
+}
+
+.signin-splitback {
+  background-image: -webkit-linear-gradient(90deg, #7579e7 50%, #9ab3f5 50%);
+}
+
+.signin-container {
+  margin-top: 250px;
+  background-color: #b9fffc
 }

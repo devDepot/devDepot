@@ -31,15 +31,16 @@ const LoginPage = ({
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      username: username,
-      password: password,
+      username,
+      password,
     }),
   };
 
   const directUser = () => {
     fetch('http://localhost:3000/login', requestHeaders)
       .then((res) => {
-        return res.json()})
+        return res.json();
+      })
       .then((data) => {
         console.log('data: ', data);
         if (data.user_type === 'Developer') {
@@ -65,31 +66,53 @@ const LoginPage = ({
   };
 
   return (
-    <div>
-      <p>DevDepot Sign In</p>
-      <label htmlFor="username">Username: </label>
-      <input
-        type="text"
-        name="username"
-        placeholder="Username"
-        id="username"
-        onChange={(e) => {
-          set_username(e.target.value);
-        }}
-        value={username}
-      ></input>
-      <label htmlFor="password">Password: </label>
-      <input
-        type="text"
-        name="password"
-        placeholder="Password"
-        id="password"
-        onChange={(e) => {
-          set_password(e.target.value);
-        }}
-        value={password}
-      ></input>
-      <button onClick={directUser}>Login</button>
+    <div className="signin-splitback h-screen overflow-hidden">
+      <div className="signin-container w-1/3 m-0 m-auto border-solid border-2 border-indigo-500 rounded-xl">
+        <h1 className="sign-in-text text-center">DevDepot Sign In</h1>
+        <div className="signin-form mt-10">
+          <div className="w-1/3 m-0 m-auto">
+            <label className="signin-label" htmlFor="username">Username: </label>
+            <div>
+              <input
+                className="border-solid border-2 border-indigo-800 rounded-lg outline-none w-full shadow-md"
+                type="text"
+                name="username"
+                placeholder="Username"
+                id="username"
+                onChange={(e) => {
+                  set_username(e.target.value);
+                }}
+                value={username}
+              />
+            </div>
+          </div>
+          <br />
+          <div className="w-1/3 m-0 m-auto">
+            <label className="signin-label" htmlFor="password">Password: </label>
+            <div>
+              <input
+                className="border-solid border-2 border-indigo-800 rounded-lg outline-none w-full shadow-md"
+                type="text"
+                name="password"
+                placeholder="Password"
+                id="password"
+                onChange={(e) => {
+                  set_password(e.target.value);
+                }}
+                value={password}
+              />
+            </div>
+          </div>
+          <div className="w-1/3 tm-0 m-auto text-center">
+            <button
+              className="signup-submit-button bg-pink-200 text-black font-bold py-2 px-4 rounded text-lg shadow-md mt-16 mb-4 animate-bounce motion-reduce"
+              onClick={directUser}
+            >
+              Log In
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
