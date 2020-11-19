@@ -16,7 +16,6 @@ const App = () => {
   const [is_dev_user, set_user] = useState(false);
   const [devs, set_devs] = useState([]);
   const [in_cart, set_cart] = useState([]);
-  const [dev_selected, set_dev_selected] = useState(false);
   const [filter_options, set_filter_options] = useState([]);
   const [username, set_username] = useState('');
   const [password, set_password] = useState('');
@@ -124,8 +123,6 @@ const App = () => {
               set_email={set_email}
               devs={devs}
               set_devs={set_devs}
-              dev_selected={dev_selected}
-              set_dev_selected={set_dev_selected}
               in_cart={in_cart}
               set_cart={set_cart}
             />
@@ -134,7 +131,6 @@ const App = () => {
             <Homepage
               devs={devs}
               in_cart={in_cart}
-              dev_selected={dev_selected}
               filter_options={filter_options}
               name={name}
             />
