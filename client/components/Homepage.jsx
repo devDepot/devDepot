@@ -4,7 +4,7 @@ import DevCardContainer from './DevCardContainer';
 
 // TODO: once dev has been added to cart, prevent default clicking
 
-const Homepage = ({ 
+const Homepage = ({
   username,
   name,
   hourly_rate,
@@ -13,7 +13,9 @@ const Homepage = ({
   in_cart,
   set_cart,
   devs,
-  set_devs
+  employer_email,
+  email,
+  set_devs,
 }) => {
   return (
     <div>
@@ -30,6 +32,7 @@ const Homepage = ({
           set_devs={set_devs}
           name={name}
           hourly_rate={hourly_rate}
+          email={email}
         />
       </div>
     </div>

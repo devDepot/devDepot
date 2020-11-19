@@ -4,12 +4,26 @@ import Homepage from './Homepage';
 import DeveloperAboutMe from './DeveloperAboutMe';
 import NavBar from './Navbar';
 
-const UserContainer = ({ is_dev_user, username, name, stack, email, hourly_rate, about, devs, set_devs, in_cart, set_cart, history, image }) => {
+const UserContainer = ({
+  is_dev_user,
+  username,
+  name,
+  stack,
+  email,
+  hourly_rate,
+  about,
+  devs,
+  set_devs,
+  in_cart,
+  set_cart,
+  history,
+  image,
+}) => {
   if (is_dev_user === true) {
     return (
       <div>
         <nav>
-          <NavBar in_cart={in_cart} />
+          <NavBar in_cart={in_cart} username={username} />
         </nav>
         <div>
           <DeveloperAboutMe
@@ -22,7 +36,7 @@ const UserContainer = ({ is_dev_user, username, name, stack, email, hourly_rate,
           />
         </div>
       </div>
-    )
+    );
   }
   if (is_dev_user === false) {
     return (
@@ -43,8 +57,8 @@ const UserContainer = ({ is_dev_user, username, name, stack, email, hourly_rate,
           />
         </div>
       </div>
-    )
+    );
   }
-}
+};
 
 export default withRouter(UserContainer);

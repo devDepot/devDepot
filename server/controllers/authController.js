@@ -52,10 +52,10 @@ authController.logIn = async (req, res, next) => {
 
       console.log('im account id: ', account_id);
       const is_dev = result.rows[0].is_dev;
- 
+
       bcrypt.compare(password, hash, (err, hashed) => {
         if (err) return next(err);
-        console.log('is_dev: ', is_dev)
+        console.log('is_dev: ', is_dev);
         if (hashed && is_dev) {
           res.locals.user_type = 'Developer';
           db.query(
@@ -63,18 +63,18 @@ authController.logIn = async (req, res, next) => {
             [account_id],
             (err, r) => {
               if (err) return next(err);
-              res.locals.user_info = r.rows[0]
+              res.locals.user_info = r.rows[0];
               return next();
             }
           );
         } else {
           res.locals.user_type = 'Employer';
           db.query(
-            'SELECT * FROM employers WHERE account_id = $1;',
+            'SELECT email, about, company, username FROM employers JOIN accounts ON accounts._id = employers._id WHERE accounts._id = $1;',
             [account_id],
             (err, r) => {
               if (err) return next(err);
-              res.locals.user_info = r.rows[0]
+              res.locals.user_info = r.rows[0];
               return next();
             }
           );
@@ -83,5 +83,6 @@ authController.logIn = async (req, res, next) => {
     }
   );
 };
+//SELECT accounts.email, employers.name, employers.about, employers.company FROM accounts LEFT OUTER JOIN employers ON employers.account_id = $1;
 
 module.exports = authController;
