@@ -27,7 +27,8 @@
 
 .dev-signup-text,
 .employer-signup-text,
-.sign-in-text
+.sign-in-text,
+.card-text
 {
   font-family: 'Space Mono', monospace;
   font-size: 40px;
@@ -77,4 +78,23 @@
 .signin-container {
   margin-top: 250px;
   background-color: #b9fffc
+}
+
+.dev-pic {
+  width: 220px;
+  height: 220px;
+  align-self: center;
+  margin-top: 25px;
+}
+
+.dev-name-text
+{
+  font-family: 'Source Code Pro', monospace;
+  font-size: xx-large;
+  font-weight: 500;
+}
+
+.dev-text {
+  font-family: 'Source Code Pro', monospace;
+  font-size: large;
 }

@@ -22,8 +22,13 @@ const AddToCartButton = ({
   console.log(in_cart);
   if (!dev_selected) {
     return (
-      <div>
-        <button onClick={addToCart}>Add to Cart</button>
+      <div className="text-center">
+        <button
+          className="signup-submit-button bg-pink-100 text-black font-bold py-2 px-4 rounded text-lg shadow-md mt-2 mb-3"
+          onClick={addToCart}
+        >
+          Add to Cart
+        </button>
       </div>
     );
   } else {
