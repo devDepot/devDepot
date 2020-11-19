@@ -39,7 +39,6 @@
 }
 
 .dev-splitback{
-  /* background-color: #2fcf21; */
   background-image: -webkit-linear-gradient(30deg, #a8ffb0 50%, #b6ffea 50%);
 }
 
@@ -55,4 +54,16 @@
 .employer-signup-img {
   height: 350;
   width: 375;
+}
+
+.navbar-logo {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-style: italic;
+  font-size: xx-large;
+}
+
+.navbar-logo,
+.navbar-user {
+  align-self: center;
 }
