@@ -16,13 +16,33 @@ const Homepage = ({
   employer_email,
   email,
   set_devs,
+  filter_options,
+  set_filter_options
 }) => {
+
   return (
     <div className="bg-gradient-to-t from-purple-600 h-screen overflow-hidden">
       <h1 className="text-center card-text mt-10 mb-4">
         Hello,
         {username}
       </h1>
+      <div>
+        <label className="filter" htmlFor="stack">Search For: </label>
+          <select
+            className="border-solid border-2 border-indigo-800 rounded-lg outline-none w-full shadow-md"
+            name="filter"
+            id="filter"
+            onChange={(e) => {
+              set_filter_options(e.target.value);
+            }}
+            value={filter_options}
+          >
+            <option value="" />
+            <option value="frontend">Frontend</option>
+            <option value="backend">Backend</option>
+            <option value="fullstack">Fullstack</option>
+          </select>
+      </div>
       <div>
         <DevCardContainer
           is_dev_user={is_dev_user}
@@ -33,6 +53,8 @@ const Homepage = ({
           name={name}
           hourly_rate={hourly_rate}
           email={email}
+          filter_options={filter_options}
+          set_filter_options={set_filter_options}
         />
       </div>
     </div>

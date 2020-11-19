@@ -16,7 +16,11 @@ const DevCardContainer = ({
   in_cart,
   set_cart,
   image,
+  filter_options,
+  set_filter_options
 }) => {
+  console.log('filter: ', filter_options);
+
   useEffect(() => {
     fetch('http://localhost:3000/developers')
       .then((res) => res.json())
@@ -24,6 +28,17 @@ const DevCardContainer = ({
         set_devs(data);
       });
   }, []);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/developers/'+filter_options)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('data: ', data);
+        set_devs(data);
+      });
+  }, [filter_options]);
+
+  console.log(devs);
 
   const renderDevs = () => {
     return devs.map((dev, index) => {
