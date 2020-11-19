@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function CartModal() {
-  const [showModal, setShowModal] = React.useState(false);
+const CartModal = ({ in_cart }) => {
+  const [showModal, setShowModal] = useState(false);
   return (
     <div>
       <button
@@ -37,7 +37,14 @@ export default function CartModal() {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  {/* DISPLAY DEVS HERE */}
+                  {in_cart.map(dev => {
+                    return (
+                      <div>
+                        <div>{dev.name}</div>
+                        <div>{dev.hourly_rate}</div>
+                      </div>
+                    )
+                  })}
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-gray-300 rounded-b">
@@ -67,3 +74,5 @@ export default function CartModal() {
     </div>
   );
 }
+
+export default CartModal;

@@ -4,7 +4,7 @@ const AddToCartButton = ({
   dev_selected,
   set_dev_selected,
   in_cart,
-  set_in_cart,
+  set_cart,
   name,
   hourly_rate
 }) => {
@@ -14,8 +14,10 @@ const AddToCartButton = ({
       name: name,
       hourly_rate: hourly_rate,
     }
-    set_in_cart([...in_cart, dev]);
+    console.log('dev: ', dev);
+    set_cart([...in_cart, dev]);
   }
+  console.log(in_cart);
   if (!dev_selected) {
     return (
       <div>
@@ -24,6 +26,10 @@ const AddToCartButton = ({
         </button>
       </div>
     )
+  } else {
+    return (
+      <div></div>
+    );
   }
 }
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import CartModal from './CartModal';
 
-const Navbar = ({}) => {
+const Navbar = ({ in_cart }) => {
   return (
     <div>
       <span>
@@ -10,7 +10,7 @@ const Navbar = ({}) => {
       </span>
       {/* conditional rendering of cart here */}
       <span>
-        <CartModal />
+        <CartModal in_cart={in_cart} />
       </span>
     </div>
   );
