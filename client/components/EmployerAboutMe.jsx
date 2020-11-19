@@ -20,6 +20,8 @@ const EmployerAboutMe = ({
   set_hourly_rate,
   about,
   set_about,
+  company,
+  set_company,
   history
 }) => {
   return (
