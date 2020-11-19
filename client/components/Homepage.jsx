@@ -4,7 +4,7 @@ import DevCardContainer from './DevCardContainer';
 
 // TODO: once dev has been added to cart, prevent default clicking
 
-const Homepage = ({ 
+const Homepage = ({
   username,
   name,
   hourly_rate,
@@ -13,11 +13,11 @@ const Homepage = ({
   in_cart,
   set_cart,
   devs,
-  set_devs
+  set_devs,
 }) => {
   return (
-    <div>
-      <h1>
+    <div className="bg-gradient-to-t from-purple-600 h-screen overflow-hidden">
+      <h1 className="text-center card-text mt-10 mb-4">
         Hello,
         {username}
       </h1>
