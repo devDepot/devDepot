@@ -26,7 +26,7 @@ const Homepage = ({
         Hello,
         {username}
       </h1>
-      <div>
+      <div className="w-1/4 m-0 m-auto mb-6">
         <label className="filter" htmlFor="stack">Search For: </label>
           <select
             className="border-solid border-2 border-indigo-800 rounded-lg outline-none w-full shadow-md"
