@@ -25,16 +25,20 @@
   font-family: 'Xanh Mono', monospace;
 }
 
-.dev-signup-text {
+.dev-signup-text,
+.employer-signup-text
+{
   font-family: 'Space Mono', monospace;
   font-size: 40px;
 }
 
-.dev-signup-label {
+.dev-signup-label,
+.employer-signup-label
+{
   font-family: 'Source Code Pro', monospace;
 }
 
-.splitback{
+.dev-splitback{
   /* background-color: #2fcf21; */
   background-image: -webkit-linear-gradient(30deg, #a8ffb0 50%, #b6ffea 50%);
 }
@@ -42,4 +46,13 @@
 .dev-signup-img {
   width: 350px;
   height: 350px;
+}
+
+.employer-splitback {
+  background-image: -webkit-linear-gradient(150deg, #ffd5cd 50%, #efbbcf 50%);
+}
+
+.employer-signup-img {
+  height: 350;
+  width: 375;
 }

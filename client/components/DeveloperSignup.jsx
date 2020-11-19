@@ -52,9 +52,9 @@ const DeveloperSignup = ({
   };
 
   return (
-    <div className="splitback h-screen overflow-hidden">
+    <div className="dev-splitback h-screen overflow-hidden">
       <div className="w-2/3 m-0 m-auto mt-2 w-8/12">
-        <h1 className="dev-signup-text text-center">Developer Sign up</h1>
+        <h1 className="dev-signup-text text-center">Developer Sign Up</h1>
         <div className="relative clear-right float-right mt-40">
           <img src={dev} alt="dev signup carrots" className="dev-signup-img" />
         </div>
@@ -177,7 +177,6 @@ const DeveloperSignup = ({
             />
           </div>
           <div className="text-center">
-
             <button 
               className="signup-submit-button bg-pink-100 text-black font-bold py-2 px-4 rounded text-lg shadow-md mt-16 mb-4 animate-bounce motion-reduce"
               onClick={registerDev}>
