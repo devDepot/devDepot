@@ -3,8 +3,6 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 import history from 'history';
 
 const RegistrationPage = ({ is_logged_in, set_login, is_dev_user, set_user, username, set_username, history }) => {
-  // If a user is logged in they should not have access to signup or login, they will be redirected straight to respective homepage
-
   useEffect(() => {
     fetch('/auth')
       .then(res => res.json())

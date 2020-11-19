@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AddToCartButton from './AddToCartButton';
 
 // devs prop will be an array of objects
 
@@ -6,7 +7,7 @@ import React, { Component } from 'react';
 //second step - write a function that maps each dev in state to a relevant JSX
 //third step - encapsulate that function into a div
 
-const DevCard = ({ name, stack, hourly_rate, devs, set_devs }) => {
+const DevCard = ({ name, stack, hourly_rate, devs, set_devs, in_cart, set_in_cart, dev_selected, set_dev_selected }) => {
 
   const collectAllDevs = () => {
     fetch('/developers')
@@ -18,7 +19,6 @@ const DevCard = ({ name, stack, hourly_rate, devs, set_devs }) => {
 
   const renderDevs = () => {
     devs.map((dev) => {
-      
       const { name, stack, hourly_rate } = dev;
 
       return (
@@ -35,6 +35,14 @@ const DevCard = ({ name, stack, hourly_rate, devs, set_devs }) => {
             Hourly Rate:
             {hourly_rate}
           </p>
+          <AddToCartButton 
+            dev_selected={dev_selected}
+            set_dev_selected={set_dev_selected}
+            in_cart={in_cart}
+            set_in_cart={set_in_cart}
+            name={name}
+            hourly_rate={hourly_rate}
+          />
         </div>
       )
     });

@@ -14,14 +14,16 @@ const EmployerSignup = ({
   email,
   set_email,
   name,
-  setName,
+  set_name,
   stack,
   set_stack,
   hourly_rate,
   set_hourly_rate,
   about,
   set_about,
-  history 
+  company,
+  set_company,
+  history
 }) => {
 
   const requestHeaders = {
@@ -40,15 +42,14 @@ const EmployerSignup = ({
   };
 
   const registerEmployer = () => {
-    fetch('/user', requestHeaders)
-      .then((res) => res.json())
-      .then((data) => {
-        if (res.status === 200) {
-          history.push('/homepage');
-        } else {
-          history.push('/employer-signup');
-        }
-      });
+    fetch('/user', requestHeaders).then((res) => {
+      if (res.status === 200) {
+        set_login(true);
+        history.push('/homepage');
+      } else {
+        history.push('/employer-signup');
+      }
+    });
   };
 
   return (
@@ -61,7 +62,7 @@ const EmployerSignup = ({
           placeholder='Name'
           id='name'
           onChange={(e) => {
-            setName(e.target.value)
+            set_name(e.target.value)
           }}
           value={name}
         >
@@ -97,7 +98,7 @@ const EmployerSignup = ({
           placeholder='Password'
           id='password'
           onChange={(e) => {
-            setPassword(e.target.value)
+            set_password(e.target.value)
           }}
           value={password}
         >
@@ -121,7 +122,7 @@ const EmployerSignup = ({
           placeholder='Tell Us About Yourself...'
           id='aboutme'
           onChange={(e) => {
-            setName(e.target.value)
+            set_about(e.target.value)
           }}
           value={about}
         >

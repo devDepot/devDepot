@@ -40,15 +40,15 @@ const DeveloperSignup = ({
   };
 
   const registerDev = () => {
-    fetch('/user', requestHeaders)
-      .then(res => res.json())
-      .then(data => {
-        if (res.status === 200) {
-          history.push('/dev-aboutme');
-        } else {
-          history.push('/dev-signup');
-        }
-      });
+    fetch('/user', requestHeaders).then((res) => {
+      if (res.status === 200) {
+        set_login(true);
+        set_user(true);
+        history.push('/homepage');
+      } else {
+        history.push('/employer-signup');
+      }
+    });
   };
   
   return (
@@ -61,7 +61,7 @@ const DeveloperSignup = ({
           placeholder='Name'
           id='name'
           onChange={(e) => {
-            setName(e.target.value)
+            set_name(e.target.value)
           }}
           value={name}
         >
@@ -123,9 +123,9 @@ const DeveloperSignup = ({
           placeholder='Hourly Rate'
           id='hourlyRate'
           onChange={(e) => {
-            setHourlyRate(e.target.value)
+            set_hourly_rate(e.target.value)
           }}
-          value={hourly-rate}
+          value={hourly_rate}
         >
         </input>
         <label htmlFor='aboutme'>Tell Us About Yourself: </label>
