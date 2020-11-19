@@ -12,7 +12,7 @@ const UserContainer = ({ is_dev_user }) => {
           <NavBar />
         </nav>
         <div>
-          <EmployerAboutMe />
+          <DeveloperAboutMe />
         </div>
       </div>
     )

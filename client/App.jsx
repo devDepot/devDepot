@@ -9,7 +9,6 @@ import history from './components/history';
 import Homepage from './components/Homepage';
 import DeveloperAboutMe from './components/DeveloperAboutMe';
 import EmployerAboutMe from './components/EmployerAboutMe';
-import AboutMe from './components/AboutMe';
 import UserContainer from './components/UserContainer';
 
 const App = () => {
@@ -26,7 +25,7 @@ const App = () => {
   const [email, set_email] = useState('');
   const [about, set_about] = useState('');
   const [company, set_company] = useState('');
-  const [hourly_rate, set_hourly_rate] = useState('');
+  const [hourly_rate, set_hourly_rate] = useState(0);
 
   return (
     <div>
@@ -44,13 +43,39 @@ const App = () => {
               is_logged_in={is_logged_in}
               is_dev_user={is_dev_user}
               username={username}
+              set_username={set_username}
+              password={password}
+              set_password={set_password}
+              stack={stack}
+              set_stack={set_stack}
+              hourly_rate={hourly_rate}
+              set_hourly_rate={set_hourly_rate}
+              about={about}
+              set_about={set_about}
+              name={name}
+              set_name={set_name}
+              email={email}
+              set_email={set_email}
             />
           </Route>
           <Route exact path="/employer-signup" component={EmployerSignup}>
             <EmployerSignup
               is_logged_in={is_logged_in}
+              set_is_logged_in={set_login}
               is_dev_user={is_dev_user}
+              set_is_dev_user={set_user}
               username={username}
+              set_username={set_username}
+              password={password}
+              set_password={set_password}
+              name={name}
+              set_name={set_name}
+              email={email}
+              set_email={set_email}
+              company={company}
+              set_company={set_company}
+              about={about}
+              set_about={set_about}
             />
           </Route>
           <Route exact path="/user-container" component={UserContainer}>
@@ -78,16 +103,6 @@ const App = () => {
           </Route>
           <Route exact path="/employer-aboutme" component={EmployerAboutMe}>
             <EmployerAboutMe
-              username={username}
-              password={password}
-              email={email}
-              name={name}
-              company={company}
-              about={about}
-            />
-          </Route>
-          <Route exact path="/aboutme" component={AboutMe}>
-            <AboutMe
               username={username}
               password={password}
               email={email}

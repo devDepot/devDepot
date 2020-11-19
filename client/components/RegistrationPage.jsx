@@ -18,8 +18,8 @@ const RegistrationPage = ({
     fetch('/auth', {
       headers: {
         'Content-Type': 'application/json',
+        token: JSON.stringify({ token }),
       },
-      body: JSON.stringify({ token }),
     })
       .then((res) => res.json())
       .then((data) => {

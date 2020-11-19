@@ -1,5 +1,5 @@
-const db = require('../models/DbModel.js');
 const bcrypt = require('bcrypt');
+const db = require('../models/DbModel.js');
 
 const saltRounds = 10;
 

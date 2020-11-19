@@ -6,7 +6,7 @@ const authController = require('./controllers/authController.js');
 const userController = require('./controllers/userController.js');
 const viewsController = require('./controllers/viewsController.js');
 const app = express();
-const PORT = 3001;
+const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
