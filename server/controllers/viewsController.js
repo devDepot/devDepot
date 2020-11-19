@@ -24,7 +24,7 @@ viewsController.getDeveloperStack = async (req, res, next) => {
       'SELECT name, stack, about, image, hourly_rate, skills, email FROM developers JOIN accounts ON accounts._id = developers.account_id WHERE stack = $1;',
       [stack]
     );
-    res.locals.stack = devStack;
+    res.locals.stack = devStack.rows;
     return next();
   } catch (err) {
     return next(err);
