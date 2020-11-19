@@ -19,6 +19,8 @@ const LoginPage = ({
   set_hourly_rate,
   email,
   set_email,
+  employer_email,
+  set_employer_email,
   company,
   set_company,
   about,
@@ -42,7 +44,7 @@ const LoginPage = ({
         return res.json();
       })
       .then((data) => {
-        console.log('data: ', data);
+        console.log('data: ', data.user_info.email);
         if (data.user_type === 'Developer') {
           localStorage.setItem('devdepot_sid', data.token);
           set_login(true);
@@ -51,14 +53,17 @@ const LoginPage = ({
           set_stack(data.user_info.stack);
           set_hourly_rate(data.user_info.hourly_rate);
           set_about(data.user_info.about);
+          set_email(data.user_info.email);
           history.push('/dev-aboutme');
         } else {
           localStorage.setItem('devdepot_sid', data.token);
           set_login(true);
           set_name(data.user_info.name);
-          set_email(data.user_info.email);
+          set_employer_email(data.user_info.email);
           set_company(data.user_info.company);
           set_about(data.user_info.about);
+          set_email(data.user_info.email);
+          console.log('emp email', employer_email);
           history.push('/user-container');
         }
         if (!data.user_type) history.push('/');
@@ -71,7 +76,9 @@ const LoginPage = ({
         <h1 className="sign-in-text text-center">DevDepot Sign In</h1>
         <div className="signin-form mt-10">
           <div className="w-1/3 m-0 m-auto">
-            <label className="signin-label" htmlFor="username">Username: </label>
+            <label className="signin-label" htmlFor="username">
+              Username:{' '}
+            </label>
             <div>
               <input
                 className="border-solid border-2 border-indigo-800 rounded-lg outline-none w-full shadow-md"
@@ -88,7 +95,9 @@ const LoginPage = ({
           </div>
           <br />
           <div className="w-1/3 m-0 m-auto">
-            <label className="signin-label" htmlFor="password">Password: </label>
+            <label className="signin-label" htmlFor="password">
+              Password:{' '}
+            </label>
             <div>
               <input
                 className="border-solid border-2 border-indigo-800 rounded-lg outline-none w-full shadow-md"

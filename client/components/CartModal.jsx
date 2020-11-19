@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-const CartModal = ({ in_cart }) => {
+const CartModal = ({ in_cart, employer_email }) => {
   const [showModal, setShowModal] = useState(false);
+  console.log('employer email: ', employer_email);
   return (
     <div>
       <button
         className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
         type="button"
-        style={{ transition: "all .15s ease" }}
+        style={{ transition: 'all .15s ease' }}
         onClick={() => setShowModal(true)}
       >
         Cart
@@ -23,9 +24,7 @@ const CartModal = ({ in_cart }) => {
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
-                  <h3 className="text-3xl font-semibold">
-                    Cart
-                  </h3>
+                  <h3 className="text-3xl font-semibold">Cart</h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
@@ -37,13 +36,13 @@ const CartModal = ({ in_cart }) => {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  {in_cart.map(dev => {
+                  {in_cart.map((dev, index) => {
                     return (
-                      <div>
+                      <div key={`dev-cart` + index}>
                         <div>{dev.name}</div>
                         <div>{dev.hourly_rate}</div>
                       </div>
-                    )
+                    );
                   })}
                 </div>
                 {/*footer*/}
@@ -51,7 +50,7 @@ const CartModal = ({ in_cart }) => {
                   <button
                     className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
                     type="button"
-                    style={{ transition: "all .15s ease" }}
+                    style={{ transition: 'all .15s ease' }}
                     onClick={() => setShowModal(false)}
                   >
                     Close
@@ -59,8 +58,21 @@ const CartModal = ({ in_cart }) => {
                   <button
                     className="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                     type="button"
-                    style={{ transition: "all .15s ease" }}
-                    onClick={() => setShowModal(false)}
+                    style={{ transition: 'all .15s ease' }}
+                    onClick={() => {
+                      console.log('ON CLICK CHECKOUT', employer_email);
+                      setShowModal(false);
+                      fetch('http://localhost:3000/checkout', {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                          hired_devs: in_cart,
+                          employer_email,
+                        }),
+                      });
+                    }}
                   >
                     Checkout
                   </button>
@@ -73,6 +85,6 @@ const CartModal = ({ in_cart }) => {
       ) : null}
     </div>
   );
-}
+};
 
 export default CartModal;

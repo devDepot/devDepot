@@ -5,7 +5,9 @@ const viewsController = {};
 // sending all engineers
 viewsController.getDevelopers = async (req, res, next) => {
   try {
-    const developers = await db.query('SELECT * FROM developers');
+    const developers = await db.query(
+      'SELECT name, stack, about, image, hourly_rate, skills, email FROM developers JOIN accounts ON accounts._id = developers.account_id;'
+    );
     // console.log('developers: ', developers.rows);
     res.locals.developers = developers.rows;
     return next();
@@ -19,7 +21,7 @@ viewsController.getDeveloperStack = async (req, res, next) => {
   try {
     const { stack } = req.params;
     const devStack = await db.query(
-      'SELECT * FROM developers WHERE stack = $1',
+      'SELECT name, stack, about, image, hourly_rate, skills, email FROM developers JOIN accounts ON accounts._id = developers.account_id WHERE stack = $1;',
       [stack]
     );
     res.locals.stack = devStack;

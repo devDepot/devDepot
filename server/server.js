@@ -23,9 +23,14 @@ app.get('/auth', authController.isLoggedIn, (req, res) => {
 });
 
 //endpoint to create a new session
-app.post('/login', authController.logIn, authController.setToken, (req, res) => {
-  res.status(200).json(res.locals);
-});
+app.post(
+  '/login',
+  authController.logIn,
+  authController.setToken,
+  (req, res) => {
+    res.status(200).json(res.locals);
+  }
+);
 
 // //endpoint to insert a new user in the database
 app.post(
@@ -49,6 +54,10 @@ app.get('/developers', viewsController.getDevelopers, (req, res) => {
 
 app.get('/developers/:stack', viewsController.getDeveloperStack, (req, res) => {
   res.status(200).json(res.locals.stack);
+});
+
+app.post('/checkout', userController.checkout, (req, res) => {
+  res.sendStatus(200);
 });
 
 // Local Err handler
