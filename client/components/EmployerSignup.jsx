@@ -30,22 +30,22 @@ const EmployerSignup = ({
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      name,
-      email,
-      username,
-      password,
-      stack,
-      hourly_rate,
-      about,
-      userType: 'Employer',
+      name: name,
+      email: email,
+      username: username,
+      password: password,
+      stack: stack,
+      hourly_rate: hourly_rate,
+      about: about,
+      user_type: 'Employer',
     }),
   };
 
   const registerEmployer = () => {
-    fetch('/user', requestHeaders).then((res) => {
+    fetch('http://localhost:3000/user', requestHeaders).then((res) => {
       if (res.status === 200) {
         set_login(true);
-        history.push('/homepage');
+        history.push('/user-container');
       } else {
         history.push('/employer-signup');
       }

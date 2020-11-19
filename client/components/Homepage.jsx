@@ -5,19 +5,18 @@ import DevCard from './DevCard';
 // TODO: once dev has been added to cart, prevent default clicking
 
 const Homepage = ({ 
-  username, 
-  name, 
-  hourly_rate, 
-  is_dev_user, 
-  history, 
-  in_cart, 
-  set_in_cart, 
-  dev_selected, 
-  set_dev_selected, 
-  devs, 
-  set_devs 
+  username,
+  name,
+  hourly_rate,
+  is_dev_user,
+  history,
+  in_cart,
+  set_cart,
+  dev_selected,
+  set_dev_selected,
+  devs,
+  set_devs
 }) => {
-
   return (
     <div>
       <h1>
@@ -25,10 +24,10 @@ const Homepage = ({
         {username}
       </h1>
       <div>
-        <DevCard 
+        <DevCard
           is_dev_user={is_dev_user}
           in_cart={in_cart}
-          set_in_cart={set_in_cart}
+          set_cart={set_cart}
           dev_selected={dev_selected}
           set_dev_selected={set_dev_selected}
           devs={devs}
