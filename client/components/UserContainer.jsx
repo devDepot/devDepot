@@ -4,7 +4,7 @@ import Homepage from './Homepage';
 import DeveloperAboutMe from './DeveloperAboutMe';
 import NavBar from './NavBar';
 
-const UserContainer = ({ is_dev_user, username }) => {
+const UserContainer = ({ is_dev_user, username, name, stack, email, hourly_rate, about, devs, set_devs, in_cart, set_cart, dev_selected, set_dev_selected }) => {
   if (is_dev_user === true) {
     return (
       <div>
@@ -12,7 +12,7 @@ const UserContainer = ({ is_dev_user, username }) => {
           <NavBar />
         </nav>
         <div>
-          <DeveloperAboutMe />
+          <DeveloperAboutMe name={name} email={email} stack={stack} hourly_rate={hourly_rate} about={about} />
         </div>
       </div>
     )
@@ -24,7 +24,7 @@ const UserContainer = ({ is_dev_user, username }) => {
           <NavBar />
         </nav>
         <div>
-          <Homepage username={username} />
+          <Homepage username={username} name={name} hourly_rate={hourly_rate} is_dev_user={is_dev_user} in_cart={in_cart} set_cart={set_cart} dev_selected={dev_selected} set_dev_selected={set_dev_selected} devs={devs} set_devs={set_devs} />
         </div>
       </div>
     )

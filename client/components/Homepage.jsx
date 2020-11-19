@@ -11,7 +11,7 @@ const Homepage = ({
   is_dev_user,
   history,
   in_cart,
-  set_in_cart,
+  set_cart,
   dev_selected,
   set_dev_selected,
   devs,
@@ -27,7 +27,7 @@ const Homepage = ({
         <DevCard
           is_dev_user={is_dev_user}
           in_cart={in_cart}
-          set_in_cart={set_in_cart}
+          set_cart={set_cart}
           dev_selected={dev_selected}
           set_dev_selected={set_dev_selected}
           devs={devs}
