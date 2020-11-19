@@ -24,6 +24,8 @@ const EmployerSignup = ({
   set_about,
   company,
   set_company,
+  image,
+  set_image,
   history,
 }) => {
   const requestHeaders = {

@@ -28,18 +28,19 @@ CREATE TABLE developers (
     about VARCHAR (280) NOT NULL,
     hourly_rate INT NOT NULL,
     active BOOLEAN NOT NULL,
+    image TEXT,
     skills TEXT,
     account_id INT REFERENCES accounts(_id) NOT NULL
 );
 
-CREATE FUNCTION create_user (_name TEXT, _username TEXT, _password TEXT, _email TEXT, _is_dev BOOLEAN, _stack TEXT, _about TEXT, _hourly_rate INT, _active BOOLEAN, _company TEXT)
+CREATE FUNCTION create_user (_name TEXT, _username TEXT, _password TEXT, _email TEXT, _is_dev BOOLEAN, _stack TEXT, _about TEXT, _hourly_rate INT, _active BOOLEAN, _company TEXT, _image TEXT)
   RETURNS accounts AS $$
     DECLARE account accounts;
     BEGIN
         INSERT INTO accounts (username, password, email, is_dev) VALUES (_username, _password, _email, _is_dev) RETURNING * INTO account;
         IF _is_dev = true
         THEN
-            INSERT INTO developers (name, stack, about, hourly_rate, active, account_id) VALUES (_name, _stack, _about, _hourly_rate, _active, account._id);
+            INSERT INTO developers (name, stack, about, hourly_rate, active, account_id, image) VALUES (_name, _stack, _about, _hourly_rate, _active, account._id, _image);
         END IF;
 
         IF _is_dev = false

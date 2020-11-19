@@ -4,7 +4,7 @@ import Homepage from './Homepage';
 import DeveloperAboutMe from './DeveloperAboutMe';
 import NavBar from './Navbar';
 
-const UserContainer = ({ is_dev_user, username, name, stack, email, hourly_rate, about, devs, set_devs, in_cart, set_cart, history }) => {
+const UserContainer = ({ is_dev_user, username, name, stack, email, hourly_rate, about, devs, set_devs, in_cart, set_cart, history, image }) => {
   if (is_dev_user === true) {
     return (
       <div>
@@ -17,6 +17,7 @@ const UserContainer = ({ is_dev_user, username, name, stack, email, hourly_rate,
             email={email}
             stack={stack}
             hourly_rate={hourly_rate}
+            image={image}
             about={about}
           />
         </div>
