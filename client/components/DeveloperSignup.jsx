@@ -176,7 +176,7 @@ const DeveloperSignup = ({
               value={about}
             />
           </div>
-          <div className="text-center">
+          <div className="w-1/3 text-center">
             <button 
               className="signup-submit-button bg-pink-100 text-black font-bold py-2 px-4 rounded text-lg shadow-md mt-16 mb-4 animate-bounce motion-reduce"
               onClick={registerDev}>
