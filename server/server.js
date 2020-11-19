@@ -43,7 +43,7 @@ app.post(
 // //endpoint to display developers, should return either all developers or
 // //all developers that match filters
 app.get('/developers', viewsController.getDevelopers, (req, res) => {
-  console.log('res.locals.developers', res.locals.developers)
+  console.log('res.locals.developers', res.locals.developers);
   res.status(200).json(res.locals.developers);
 });
 

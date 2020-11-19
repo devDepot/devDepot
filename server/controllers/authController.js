@@ -20,7 +20,7 @@ authController.setToken = (req, res, next) => {
   return next();
 };
 
-authController.is_logged_in = (req, res, next) => {
+authController.isLoggedIn = (req, res, next) => {
   //check if devdepot_session exists - if not the return false(not logged in)
   //to frontend
   //if exists, verify
@@ -48,14 +48,21 @@ authController.logIn = (req, res, next) => {
   //use bcrypt.compare against result
   //bcrypt.compare(my plaintext password)
   console.log('req.body', req.body);
-  const params = [req.body.username];
+  const { username, password } = req.body;
+  const params = [username];
 
   db.query(
     'SELECT password FROM accounts WHERE username = $1',
     params,
-    (err, rows) => {
+    (err, result) => {
       if (err) return next(err);
-      console.log('ROWSS login', rows);
+      const hash = result.rows[0].password;
+      bcrypt.compare(password, hash, (err, result) => {
+        if (err) return next(err);
+        if (result) {
+          console.log('hello');
+        }
+      });
     }
   );
 };
